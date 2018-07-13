@@ -1,0 +1,12 @@
+.improbable/
+spatialos.*.build.json
+build/
+logs/
+
+SpatialOS/schema/bin/
+OtherWorkers/Interactive/client/bin/
+OtherWorkers/Interactive/client/src/improbable/
+HelloWorker/bin/
+HelloWorker/src/improbable/
+OtherWorkers/DiceWorker/bin/
+OtherWorkers/DiceWorker/src/improbable/

@@ -1,0 +1,15 @@
+// Copyright (c) Improbable Worlds Ltd, All Rights Reserved
+package demo;
+
+type Pong {
+	string worker_type = 1;
+	string worker_message = 2;
+}
+
+type PingRequest {
+}
+
+component PingResponder {
+  id = 101;
+  command Pong ping(PingRequest);
+}

@@ -1,0 +1,26 @@
+{
+  "dimensionsInWorldUnits": {
+    "x": 1000,
+    "z": 1000
+  },
+  "loadBalancing": {
+    "layerConfigurations": [
+      {
+        "layer": "greetings",
+        "hexGrid": {
+          "numWorkers": 1
+        }
+      },
+      {
+        "layer": "dice",
+        "hexGrid": {
+          "numWorkers": 1
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "takeSnapshotIntervalSeconds": "600",
+    "startDeploymentFromSnapshotFile": "../shared/default.snapshot"
+  }
+}
