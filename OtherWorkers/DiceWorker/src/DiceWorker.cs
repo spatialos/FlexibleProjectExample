@@ -19,7 +19,7 @@ namespace Demo
             Action printUsage = () =>
             {
                 Console.WriteLine("Usage: DiceWorker <hostname> <port> <worker_id>");
-                Console.WriteLine("Connects to the demo FPS project.");
+                Console.WriteLine("Connects to the demo Flexible Project Layout project.");
                 Console.WriteLine("    <hostname>      - hostname of the receptionist to connect to.");
                 Console.WriteLine("    <port>          - port to use.");
                 Console.WriteLine("    <worker_id>     - name of the worker assigned by SpatialOS.");
