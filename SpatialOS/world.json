@@ -3,22 +3,7 @@
     "x": 1000,
     "z": 1000
   },
-  "loadBalancing": {
-    "layerConfigurations": [
-      {
-        "layer": "greetings",
-        "hexGrid": {
-          "numWorkers": 1
-        }
-      },
-      {
-        "layer": "dice",
-        "hexGrid": {
-          "numWorkers": 1
-        }
-      }
-    ]
-  },
+  "loadBalancing": {},
   "snapshot": {
     "takeSnapshotIntervalSeconds": "600",
     "startDeploymentFromSnapshotFile": "../shared/default.snapshot"

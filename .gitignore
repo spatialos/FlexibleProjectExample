@@ -1,4 +1,5 @@
 .improbable/
+.idea/
 spatialos.*.build.json
 build/
 logs/
