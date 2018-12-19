@@ -2,7 +2,7 @@
 
 This optional configuration file tells SpatialOS what [deployment template](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#templates) and runtime flags should be used when starting a deployment.
 
-If this configuration file is not provided, the default `small` template will be used with no `runtimeFlags`. 
+This file can be passed to `spatial local launch` & `spatial cloud launch` commands via `--launch_config` flag. If this configuration file is not provided, the default `small` template will be used with no `runtimeFlags`. 
 
 ### Configuration file format
 
