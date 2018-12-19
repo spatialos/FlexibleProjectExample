@@ -70,6 +70,8 @@ This connects a client that pings the `HelloWorker` and `DiceWorker` every few s
 
 [World configuration](docs/reference/world-configuration.md)
 
+[Deployment launch configuration](docs/reference/deployment-launch-configuration.md)
+
 [Server worker configuration](docs/reference/server-worker-configuration.md)
 
 [Client worker configuration](docs/reference/client-worker-configuration.md)
