@@ -12,7 +12,11 @@ The file may be called by any name but should have the following structure:
     "x": 100,
     "z": 100
   },
-  "loadBalancing": {},
+  "loadBalancing": {
+    "layerConfigurations": [
+      ...
+    ]
+  },
   "snapshot": {
     "takeSnapshotIntervalSeconds": "600",
     "startDeploymentFromSnapshotFile": "snapshots/default.snapshot"
@@ -34,6 +38,6 @@ The file may be called by any name but should have the following structure:
 | Field | Required/Optional | Description | 
 | :------------- | :------------- | :------- |
 | `dimensionsInWorldUnits` | Required | Describes how big the world should be. "x" and "z" parameters must both be greater than 0. |
-| `loadBalancing` | Required | Currently not supported and should be defined as an empty object `{}`. In the near future, this will specify how to distribute workers across the world, similarly to the [current load balancing configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/loadbalancer-config). |
+| `loadBalancing` | Required | The new load balancing configuration as documented in [load balancing with layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancer-config-2#load-balancing-with-layers). |
 | `snapshot` | Optional | Specifies which snapshot file to start the deployment from and how often to take a snapshot while the deployment is running. <br><br> It contains two optional fields: `takeSnapshotIntervalSeconds` (optional) and `startDeploymentFromSnapshotFile` (optional). |
 | `workerFlags` | Optional | Specifies any additional flags to pass to workers. Each element contains two fields: `workerType` (required) and `flags` (required). |

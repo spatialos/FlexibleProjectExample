@@ -8,19 +8,15 @@ The file may be called by any name but should have the following structure:
 ```json
 {
   "workerType": "HelloWorker",
-  "attributeSet": {
-    "attributes": [
-      "greetings"
-    ]
-  },
-  "entity_interest": {
-    "range_entity_interest": {
+  "layer": "greetings",
+  "entityInterest": {
+    "rangeEntityInterest": {
       "radius": 2
     }
   },
   "componentDelivery": {
     "default": "RELIABLE_ORDERED",
-    "checkout_all_initially": true
+    "checkoutAllInitially": true
   },
   "launchConfiguration": {
     "localDeployment": {
@@ -37,7 +33,7 @@ The file may be called by any name but should have the following structure:
 | Field | Required/Optional | Description | 
 | :------------- | :------------- | :------- |
 | `workerType` | Required | Used to identify this worker type elsewhere in your project. |
-| `attributeSet` | Optional | Describes the worker's capabilities. The attribute set has analogous semantics to the [previous version's `worker_attribute_set`](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#worker-attribute-sets). |
+|`layer`| Optional | The name of the simulation layer of this worker, used to determine the load balancing strategy. For more information, see [introduction to layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/layers#introduction-to-layers).|
 | `entityInterest` | Optional | Specifies the entities to subscribe to in addition to the ones the worker is authoritative over. The semantics are analogous to the [`entity_interest` field in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#entity-interest). |
 | `streamingQuery` | Optional | Specifies the streaming queries the bridge will subscribe to. Analogous to [`streaming_query` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#streaming-queries). |
 | `componentDelivery` | Optional | Specifies the delivery settings for the worker's components. Analogous to [`component_delivery` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#component-delivery). |

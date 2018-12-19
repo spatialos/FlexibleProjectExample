@@ -1,10 +1,6 @@
 {
   "workerType": "InteractiveClient",
-  "attributeSet": {
-    "attributes": [
-      "client"
-    ]
-  },
+  "layer": "client",
   "entityInterest": {
     "rangeEntityInterest": {
       "radius": 2
