@@ -64,6 +64,9 @@ Connect your client by opening a second terminal to run the binary directly (fro
 
 This connects a client that pings the `HelloWorker` and `DiceWorker` every few seconds and then prints the response.
 
+## Logs location
+The logs are stored in `logs` subdirectory of the location where your `spatialos.json` file is. For example, if my `spatialos.json` file is in `/workspace/project/SpatialOS`, the SpatialOS logs will go to `/workspace/project/SpatialOS/logs`.
+
 ## Reference documentation
 
 [Main project configuration](docs/reference/project-configuration.md)
