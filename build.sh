@@ -8,7 +8,7 @@ WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client
 BUILD_PLATFORMS=(macOS64 Windows64 Linux64)
 DOWNLOAD_DIR="$(pwd)/build"
 BUILD_DIR="$(pwd)"
-SDK_VERSION="13.0.1"
+SDK_VERSION="13.5.1"
 mkdir -p "${DOWNLOAD_DIR}"
 
 function isLinux() {
@@ -37,7 +37,7 @@ function getPlatformName() {
   fi
 }
 PLATFORM_NAME=$(getPlatformName)
-BUILD_TOOL="xbuild"
+BUILD_TOOL="msbuild"
 if isWindows; then
   BUILD_TOOL="MSBuild.exe"
 fi
@@ -73,7 +73,13 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   # Compile the schema
   OUT_DIR=improbable/generated
   mkdir -p "$OUT_DIR"
-  "$DOWNLOAD_DIR"/schema_compiler --schema_path="${BUILD_DIR}/SpatialOS/schema" --schema_path="$DOWNLOAD_DIR" --csharp_out="$OUT_DIR" --load_all_schema_on_schema_path "${BUILD_DIR}"/SpatialOS/schema/*.schema "${DOWNLOAD_DIR}"/improbable/*.schema
+  "$DOWNLOAD_DIR"/schema_compiler \
+    --schema_path="${BUILD_DIR}/SpatialOS/schema" \
+    --schema_path="$DOWNLOAD_DIR" \
+    --csharp_out="$OUT_DIR" \
+    --load_all_schema_on_schema_path \
+    ${BUILD_DIR}/SpatialOS/schema/*.schema \
+    ${DOWNLOAD_DIR}/improbable/*.schema
 
   # Compile UserCode+SDK+C#Schema into a binary
   mkdir -p improbable/dependencies/managed
@@ -91,15 +97,14 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   popd
 done
 
-# Compile the schemas into a schema descriptor: compile schemas to proto, compile proto
-# This step will be simplified into a single command in the future
-mkdir -p "${DOWNLOAD_DIR}/generated_protos"
-cp -r "${DOWNLOAD_DIR}"/proto/* "${DOWNLOAD_DIR}/generated_protos"
+# Compile the schemas into a schema descriptor
 mkdir -p "${BUILD_DIR}/SpatialOS/schema/bin"
-
-"${DOWNLOAD_DIR}/schema_compiler" --schema_path="${BUILD_DIR}/SpatialOS/schema" --schema_path="${DOWNLOAD_DIR}" --proto_out="${DOWNLOAD_DIR}/generated_protos" --load_all_schema_on_schema_path "${DOWNLOAD_DIR}"/improbable/*.schema "${BUILD_DIR}"/SpatialOS/schema/*.schema
-"${DOWNLOAD_DIR}/protoc" --proto_path="${DOWNLOAD_DIR}/generated_protos" --descriptor_set_out="${BUILD_DIR}/SpatialOS/schema/bin/schema.descriptor" --include_imports "${DOWNLOAD_DIR}"/generated_protos/*.proto "${DOWNLOAD_DIR}"/generated_protos/**/*.proto
-
-rm -r "${DOWNLOAD_DIR}/generated_protos"
+"${DOWNLOAD_DIR}/schema_compiler" \
+  --schema_path="${BUILD_DIR}/SpatialOS/schema" \
+  --schema_path="${DOWNLOAD_DIR}" \
+  --load_all_schema_on_schema_path \
+  --descriptor_set_out="${BUILD_DIR}/SpatialOS/schema/bin/schema.descriptor" \
+  ${DOWNLOAD_DIR}/improbable/*.schema \
+  ${BUILD_DIR}/SpatialOS/schema/*.schema
 
 echo "Build complete"
