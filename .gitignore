@@ -1,6 +1,8 @@
 .improbable/
 .idea/
 spatialos.*.build.json
+*.DS_Store
+.envrc
 build/
 logs/
 

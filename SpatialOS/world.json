@@ -1,26 +1,26 @@
 {
-  "dimensionsInWorldUnits": {
-    "x": 1000,
-    "z": 1000
+  "dimensions_in_world_units": {
+    "x": 500,
+    "z": 500
   },
-  "loadBalancing": {
-    "layerConfigurations": [
+  "load_balancing": {
+    "layer_configurations": [
       {
         "layer": "dice",
-        "hexGrid": {
-          "numWorkers": 2
+        "hex_grid": {
+          "num_workers": 2
         }
       },
       {
         "layer": "greetings",
-        "hexGrid": {
-          "numWorkers": 2
+        "hex_grid": {
+          "num_workers": 2
         }
       }
     ]
   },
   "snapshot": {
-    "takeSnapshotIntervalSeconds": "600",
-    "startDeploymentFromSnapshotFile": "../shared/default.snapshot"
+    "take_snapshot_interval_seconds": "600",
+    "start_deployment_from_snapshot_file": "../shared/default.snapshot"
   }
 }

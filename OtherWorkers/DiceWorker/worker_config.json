@@ -1,19 +1,19 @@
 {
-  "workerType": "DiceWorker",
+  "worker_type": "DiceWorker",
   "layer": "dice",
-  "entityInterest": {
-    "rangeEntityInterest": {
+  "entity_interest": {
+    "range_entity_interest": {
       "radius": 2
     }
   },
-  "componentDelivery": {
+  "component_delivery": {
     "default": "RELIABLE_ORDERED",
-    "checkoutAllInitially": true
+    "checkout_all_initially": true
   },
-  "launchConfiguration": {
-    "cloudDeployment": {
+  "launch_configuration": {
+    "cloud_deployment": {
       "linux": {
-        "localBuildDirectory": "bin/x64/ReleaseLinux",
+        "local_build_directory": "bin/x64/ReleaseLinux",
         "command": "mono",
         "arguments": [
           "DiceWorker.exe",
@@ -23,9 +23,9 @@
         ]
       }
     },
-    "localDeployment": {
+    "local_deployment": {
       "macos": {
-        "localBuildDirectory": "bin/x64/ReleaseMacOS",
+        "local_build_directory": "bin/x64/ReleaseMacOS",
         "command": "mono",
         "arguments": [
           "--arch=64",
@@ -36,7 +36,7 @@
         ]
       },
       "linux": {
-        "localBuildDirectory": "bin/x64/ReleaseLinux",
+        "local_build_directory": "bin/x64/ReleaseLinux",
         "command": "mono",
         "arguments": [
           "DiceWorker.exe",
@@ -46,7 +46,7 @@
         ]
       },
       "windows": {
-        "localBuildDirectory": "bin/x64/ReleaseWindows",
+        "local_build_directory": "bin/x64/ReleaseWindows",
         "command": "DiceWorker.exe",
         "arguments": [
           "${IMPROBABLE_RECEPTIONIST_HOST}",

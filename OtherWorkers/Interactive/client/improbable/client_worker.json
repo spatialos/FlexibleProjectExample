@@ -1,13 +1,13 @@
 {
-  "workerType": "InteractiveClient",
+  "worker_type": "InteractiveClient",
   "layer": "client",
-  "entityInterest": {
-    "rangeEntityInterest": {
+  "entity_interest": {
+    "range_entity_interest": {
       "radius": 2
     }
   },
-  "componentDelivery": {
+  "component_delivery": {
     "default": "RELIABLE_ORDERED",
-    "checkoutAllInitially": true
+    "checkout_all_initially": true
   }
 }
