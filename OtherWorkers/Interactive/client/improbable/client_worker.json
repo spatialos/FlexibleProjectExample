@@ -9,5 +9,16 @@
   "componentDelivery": {
     "default": "RELIABLE_ORDERED",
     "checkoutAllInitially": true
+  },
+  "uploadConfiguration": {
+    "windows": {
+      "localBuildDirectory": "../bin/x64/ReleaseWindows"
+    },
+    "macos": {
+      "localBuildDirectory": "../bin/x64/ReleaseMacOS"
+    },
+    "linux": {
+      "localBuildDirectory": "../bin/x64/ReleaseLinux"
+    }
   }
 }
