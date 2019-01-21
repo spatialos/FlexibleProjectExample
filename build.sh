@@ -67,13 +67,16 @@ retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "lib/linux64"
 retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "lib/macos64"
 
 # Generate C# code from the schemas:
-mkdir -p "${DOWNLOAD_DIR}"/csharp
+SCHEMA_DIR="${BUILD_DIR}"/SpatialOS/schema
+OUT_DIR="${SCHEMA_DIR}"/bin/generated/csharp
+
+mkdir -p "${OUT_DIR}"
 "${DOWNLOAD_DIR}"/schema_compiler/schema_compiler \
-  --schema_path="${BUILD_DIR}"/SpatialOS/schema \
+  --schema_path="${SCHEMA_DIR}" \
   --schema_path="$DOWNLOAD_DIR"/standard_library \
-  --csharp_out="${DOWNLOAD_DIR}"/csharp \
+  --csharp_out="${OUT_DIR}" \
   --load_all_schema_on_schema_path \
-  "${BUILD_DIR}"/SpatialOS/schema/*.schema \
+  "${SCHEMA_DIR}"/*.schema \
   "${DOWNLOAD_DIR}"/standard_library/improbable/*.schema
 
 # For each worker:
@@ -83,7 +86,7 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   mkdir -p improbable/generated
   mkdir -p improbable/dependencies/managed
   mkdir -p improbable/dependencies/native
-  cp -R "${DOWNLOAD_DIR}"/csharp/* improbable/generated
+  cp -R "${OUT_DIR}"/* improbable/generated
   cp "${DOWNLOAD_DIR}"/lib/csharp/* improbable/dependencies/managed
   cp "${DOWNLOAD_DIR}"/lib/win64/* improbable/dependencies/native
   cp "${DOWNLOAD_DIR}"/lib/linux64/* improbable/dependencies/native
@@ -99,13 +102,12 @@ for WORKER in "${WORKER_DIRS[@]}"; do
 done
 
 # Generate a schema descriptor from the schemas:
-mkdir -p "${BUILD_DIR}"/SpatialOS/schema/bin
 "${DOWNLOAD_DIR}"/schema_compiler/schema_compiler \
-  --schema_path="${BUILD_DIR}"/SpatialOS/schema \
+  --schema_path="${SCHEMA_DIR}" \
   --schema_path="${DOWNLOAD_DIR}"/standard_library \
   --load_all_schema_on_schema_path \
-  --descriptor_set_out="${BUILD_DIR}"/SpatialOS/schema/bin/schema.descriptor \
+  --descriptor_set_out="${SCHEMA_DIR}"/bin/schema.descriptor \
   "${DOWNLOAD_DIR}"/standard_library/improbable/*.schema \
-  "${BUILD_DIR}"/SpatialOS/schema/*.schema
+  "${SCHEMA_DIR}"/*.schema
 
 echo "Build complete"
