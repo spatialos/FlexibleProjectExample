@@ -1,7 +1,7 @@
 .improbable/
 .idea/
 spatialos.*.build.json
-build/
+packages/
 logs/
 
 SpatialOS/schema/bin/
