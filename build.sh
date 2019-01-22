@@ -6,10 +6,10 @@ cd "$(dirname "$0")"
 
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
 BUILD_PLATFORMS=(macOS64 Windows64 Linux64)
-DOWNLOAD_DIR="$(pwd)/packages"
+PACKAGES_DIR="$(pwd)/packages"
 BUILD_DIR="$(pwd)"
 SDK_VERSION="13.5.1"
-mkdir -p "${DOWNLOAD_DIR}"
+mkdir -p "${PACKAGES_DIR}"
 
 function isLinux() {
   [[ "$(uname -s)" == "Linux" ]]
@@ -47,7 +47,7 @@ retrievePackage() {
   PACKAGE=$2
   TARGETDIR=$3
 
-  pushd "${DOWNLOAD_DIR}"
+  pushd "${PACKAGES_DIR}"
   if [ ! -d "${TARGETDIR}" ]; then
     spatial package get --force --unzip "${TYPE}" "${PACKAGE}" "${SDK_VERSION}" "${TARGETDIR}"
   fi
@@ -71,13 +71,13 @@ SCHEMA_DIR="${BUILD_DIR}"/SpatialOS/schema
 OUT_DIR="${SCHEMA_DIR}"/bin/generated/csharp
 
 mkdir -p "${OUT_DIR}"
-"${DOWNLOAD_DIR}"/schema_compiler/schema_compiler \
+"${PACKAGES_DIR}"/schema_compiler/schema_compiler \
   --schema_path="${SCHEMA_DIR}" \
-  --schema_path="$DOWNLOAD_DIR"/standard_library \
+  --schema_path="$PACKAGES_DIR"/standard_library \
   --csharp_out="${OUT_DIR}" \
   --load_all_schema_on_schema_path \
   "${SCHEMA_DIR}"/*.schema \
-  "${DOWNLOAD_DIR}"/standard_library/improbable/*.schema
+  "${PACKAGES_DIR}"/standard_library/improbable/*.schema
 
 # For each worker:
 for WORKER in "${WORKER_DIRS[@]}"; do
@@ -87,10 +87,10 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   mkdir -p improbable/dependencies/managed
   mkdir -p improbable/dependencies/native
   cp -R "${OUT_DIR}"/* improbable/generated
-  cp "${DOWNLOAD_DIR}"/lib/csharp/* improbable/dependencies/managed
-  cp "${DOWNLOAD_DIR}"/lib/win64/* improbable/dependencies/native
-  cp "${DOWNLOAD_DIR}"/lib/linux64/* improbable/dependencies/native
-  cp "${DOWNLOAD_DIR}"/lib/macos64/* improbable/dependencies/native
+  cp "${PACKAGES_DIR}"/lib/csharp/* improbable/dependencies/managed
+  cp "${PACKAGES_DIR}"/lib/win64/* improbable/dependencies/native
+  cp "${PACKAGES_DIR}"/lib/linux64/* improbable/dependencies/native
+  cp "${PACKAGES_DIR}"/lib/macos64/* improbable/dependencies/native
 
   for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
     ${BUILD_TOOL} CsharpWorker.sln /property:Configuration=Release /property:Platform="$PLATFORM"
@@ -102,12 +102,12 @@ for WORKER in "${WORKER_DIRS[@]}"; do
 done
 
 # Generate a schema descriptor from the schemas:
-"${DOWNLOAD_DIR}"/schema_compiler/schema_compiler \
+"${PACKAGES_DIR}"/schema_compiler/schema_compiler \
   --schema_path="${SCHEMA_DIR}" \
-  --schema_path="${DOWNLOAD_DIR}"/standard_library \
+  --schema_path="${PACKAGES_DIR}"/standard_library \
   --load_all_schema_on_schema_path \
   --descriptor_set_out="${SCHEMA_DIR}"/bin/schema.descriptor \
-  "${DOWNLOAD_DIR}"/standard_library/improbable/*.schema \
+  "${PACKAGES_DIR}"/standard_library/improbable/*.schema \
   "${SCHEMA_DIR}"/*.schema
 
 echo "Build complete"
