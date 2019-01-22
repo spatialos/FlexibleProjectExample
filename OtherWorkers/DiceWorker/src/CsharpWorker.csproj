@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Improbable.WorkerSdkCsharp, Version=13.0.1.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Improbable.WorkerSdkCsharp, Version=13.5.1.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>improbable\dependencies\managed\Improbable.WorkerSdkCsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />

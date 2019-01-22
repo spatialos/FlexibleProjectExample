@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
 BUILD_DIR="$(pwd)"
-DOWNLOAD_DIR="$(pwd)/build"
+DOWNLOAD_DIR="$(pwd)/packages"
 
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"
