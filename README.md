@@ -30,11 +30,11 @@ We've tested the project with the following:
 ## How do I use it?
 The custom layout is enabled by the `spatial` tool detecting a [new-format spatialos.json](docs/reference/project-configuration.md) file. 
 
-`spatial local launch` and `spatial cloud launch` work differently for a flexible project. You only get access to the new versions of these commands when you are **either**:
+`spatial alpha local launch` and `spatial alpha cloud launch` work differently for a flexible project. You only get access to the new versions of these commands when you are **either**:
 * inside a directory containing a new-format `spatialos.json`, **or** 
 * when referencing a new-format `spatialos.json` using the `--main_config` flag
 
-Both `spatial local launch` and `spatial cloud launch` have a new parameter, `--world`, which points to a world configuration file. This flag is required to launch a deployment, although by default a file named [`world.json`](docs/reference/world-configuration.md) in the current working directory will be used if you don't pass the flag in.
+Both `spatial alpha local launch` and `spatial alpha cloud launch` have a new parameter, `--world`, which points to a world configuration file. This flag is required to launch a deployment, although by default a file named [`world.json`](docs/reference/world-configuration.md) in the current working directory will be used if you don't pass the flag in.
 
 You can access this information at any time by using the `--help` flag in the `spatial` command line tool.
 
@@ -53,7 +53,7 @@ Run `./clean.sh` to delete all build files, including worker binaries and any in
 
 To launch a local instance of SpatialOS running the project,  run 
 ```bash
-$ spatial local launch --launch_config ./deployment.json --optimize_for_runtime_v2
+$ spatial alpha local launch --launch_config ./deployment.json --optimize_for_runtime_v2
 ``` 
 from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
