@@ -23,4 +23,4 @@ The file may be called by any name but should have the following structure:
 | Field | Required/Optional | Description | 
 | :------------- | :------------- | :------- |
 | `template` | Required | Defines the compute resources your deployment needs (i.e., its ‘topology’). See [deployment templates](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#templates) for more details. |
-| `runtimeFlags` | Optional | The runtime flags that can control advanced runtime features. Similar to [legacy flags](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#legacy-flags).|
+| `runtimeFlags` | Optional | The runtime flags that can control advanced runtime features. Equivalent to [legacy flags](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#legacy-flags).|
