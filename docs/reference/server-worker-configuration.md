@@ -80,4 +80,6 @@ The platform name can be one of `macos`, `linux` or `windows`. Each of these can
 | `arguments` | Required | A list of arguments to provide to the base command. The arguments can contain the same placeholder strings as specified in the previous version of configuration, which are interpolated by SpatialOS before the worker is launched. See the [worker launch configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/launch-configuration) documentation for more information. |
 
 #### Cloud deployment configuration
-The cloud deployment configuration specifies how to launch the worker in the cloud. It's the same as the local deployment configuration at the moment but will include additional fields in the future, allowing you to specify where the worker binaries are uploaded.
+The cloud deployment configuration specifies how to launch the worker in the cloud. It's the same as the local deployment configuration at the moment, with the following exceptions:
+- A zip file containing the directory specified in `localBuildDirectory` will be uploaded to the cloud.
+- Additional fields will be added in the future, allowing you to specify where the worker binaries are uploaded.
