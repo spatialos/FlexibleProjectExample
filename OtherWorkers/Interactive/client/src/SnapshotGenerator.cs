@@ -18,7 +18,6 @@ namespace Demo
         public static void GenerateSnapshot(string snapshotPath, string[] workers)
         {
             Console.WriteLine(String.Format("Generating snapshot file {0}", snapshotPath));
-            Assembly.Load("GeneratedCode");
             using (var snapshotOutput = new SnapshotOutputStream(snapshotPath))
             {
                 for (var i = 0; i < workers.Length; i++)

@@ -83,15 +83,6 @@ mkdir -p "${OUT_DIR}"
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"/src
   # Compile UserCode + GeneratedC# + CoreSDK + C#SDK into a binary
-  mkdir -p improbable/generated
-  mkdir -p improbable/dependencies/managed
-  mkdir -p improbable/dependencies/native
-  cp -R "${OUT_DIR}"/* improbable/generated
-  cp "${PACKAGES_DIR}"/lib/csharp/* improbable/dependencies/managed
-  cp "${PACKAGES_DIR}"/lib/win64/* improbable/dependencies/native
-  cp "${PACKAGES_DIR}"/lib/linux64/* improbable/dependencies/native
-  cp "${PACKAGES_DIR}"/lib/macos64/* improbable/dependencies/native
-
   for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
     ${BUILD_TOOL} CsharpWorker.sln /property:Configuration=Release /property:Platform="$PLATFORM"
     cp -r bin ..

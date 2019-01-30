@@ -31,8 +31,6 @@ namespace Demo
 
         static int Main(string[] arguments)
         {
-            Assembly.Load("GeneratedCode");
-
             Action printUsage = () =>
             {
                 Console.WriteLine("Usage: Client <hostname> <port> <client_id>");
