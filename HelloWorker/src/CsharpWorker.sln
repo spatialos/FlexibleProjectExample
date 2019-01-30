@@ -4,8 +4,6 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpWorker", "CsharpWorker.csproj", "{5F743C5A-5961-4406-83A9-3D97CB5FE4ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratedCode", "GeneratedCode.csproj", "{2A8F3D05-A4BF-4F4A-83B1-6761CA9CE011}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|macOS64 = Debug|macOS64

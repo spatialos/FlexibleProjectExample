@@ -30,8 +30,6 @@ namespace Demo
                 return ErrorExitStatus;
             }
 
-            Assembly.Load("GeneratedCode");
-
             Console.WriteLine("Worker Starting...");
             using (var connection = ConnectWorker(arguments))
             {
