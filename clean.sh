@@ -13,5 +13,6 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   popd
 done
 
-./clean_dependencies.sh
-./clean_codegen.sh
+PACKAGES_DIR="$(pwd)/packages"
+rm -rf "${PACKAGES_DIR}"
+rm -rf SpatialOS/schema/bin
