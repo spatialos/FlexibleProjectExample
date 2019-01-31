@@ -2,8 +2,8 @@
 
 set -e -x
 
-BUILD_DIR="$(pwd)"
-PACKAGES_DIR="$(pwd)/packages"
+BUILD_DIR="$1"
+PACKAGES_DIR="$2"
 
 SCHEMA_DIR="${BUILD_DIR}"/SpatialOS/schema
 OUT_DIR="${SCHEMA_DIR}"/bin/generated/csharp

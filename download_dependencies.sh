@@ -4,8 +4,8 @@ set -e -x
 
 cd "$(dirname "$0")"
 
-PACKAGES_DIR="$(pwd)/packages"
-SDK_VERSION="13.5.1"
+PACKAGES_DIR="$1"
+SDK_VERSION="$2"
 mkdir -p "${PACKAGES_DIR}"
 
 retrievePackage() {

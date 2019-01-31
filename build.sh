@@ -5,20 +5,23 @@ set -e -x
 cd "$(dirname "$0")"
 
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
-BUILD_PLATFORMS=(macOS64 Windows64 Linux64)
-PACKAGES_DIR="$(pwd)/packages"
 BUILD_DIR="$(pwd)"
+PACKAGES_DIR="$(pwd)/packages"
 SDK_VERSION="13.5.1"
 
-./download_dependencies.sh
+./download_dependencies.sh "${PACKAGES_DIR}" "${SDK_VERSION}"
 
-./codegen.sh
+./codegen.sh "${BUILD_DIR}" "${PACKAGES_DIR}"
 
+BUILD_TOOL="msbuild"
+if isWindows; then
+  BUILD_TOOL="MSBuild.exe"
+fi
 # For each worker:
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"/src
   # Compile UserCode + GeneratedC# + CoreSDK + C#SDK into a binary
-  ./build.sh
+  ./build.sh "${BUILD_TOOL}"
   popd
 done
 
