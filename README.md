@@ -53,7 +53,7 @@ Run `./clean.sh` to delete all build files, including worker binaries and any in
 
 To launch a local instance of SpatialOS running the project,  run 
 ```bash
-$ spatial alpha local launch --launch_config ./deployment.json --optimize_for_runtime_v2
+$ spatial alpha local launch --launch_config ./deployment.json
 ``` 
 from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
