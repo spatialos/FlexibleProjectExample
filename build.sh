@@ -14,11 +14,6 @@ SDK_VERSION="13.5.1"
 
 ./codegen.sh
 
-BUILD_TOOL="msbuild"
-if isWindows; then
-  BUILD_TOOL="MSBuild.exe"
-fi
-
 # For each worker:
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"/src
@@ -26,14 +21,5 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   ./build.sh
   popd
 done
-
-# Generate a schema descriptor from the schemas:
-"${PACKAGES_DIR}"/schema_compiler/schema_compiler \
-  --schema_path="${SCHEMA_DIR}" \
-  --schema_path="${PACKAGES_DIR}"/standard_library \
-  --load_all_schema_on_schema_path \
-  --descriptor_set_out="${SCHEMA_DIR}"/bin/schema.descriptor \
-  "${PACKAGES_DIR}"/standard_library/improbable/*.schema \
-  "${SCHEMA_DIR}"/*.schema
 
 echo "Build complete"
