@@ -51,7 +51,7 @@ Run `./clean.sh` to delete all build files, including worker binaries and any in
 
 ## Running the project
 
-To launch a local instance of SpatialOS running the project,  run the following command from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). 
+To launch a local instance of SpatialOS running the project, run the following command from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). 
 - if you are using the new runtime:
 ```bash
 $ spatial alpha local launch --launch_config ./deployment.json
