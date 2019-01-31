@@ -14,5 +14,4 @@ for WORKER in "${WORKER_DIRS[@]}"; do
 done
 
 ./clean_dependencies.sh
-
-rm -rf SpatialOS/schema/bin
+./clean_codegen.sh
