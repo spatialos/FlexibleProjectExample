@@ -51,16 +51,11 @@ Run `./clean.sh` to delete all build files, including worker binaries and any in
 
 ## Running the project
 
-To launch a local instance of SpatialOS running the project, run the following command from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). 
-- if you are using the new runtime:
+To launch a local instance of SpatialOS running the project,  run 
 ```bash
 $ spatial alpha local launch --launch_config ./deployment.json
 ``` 
-- if you are using the old runtime:
-```bash
-$ spatial alpha local launch --launch_config ./deployment.json --using_old_loadbalancer
-```
-This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
+from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
 Now you can connect game clients. You can find the client binaries in `OtherWorkers/Interactive/client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac).
 Connect your client by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
