@@ -13,15 +13,11 @@ SDK_VERSION="13.5.1"
 
 ./codegen.sh "${BUILD_DIR}" "${PACKAGES_DIR}"
 
-BUILD_TOOL="msbuild"
-if isWindows; then
-  BUILD_TOOL="MSBuild.exe"
-fi
 # For each worker:
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"/src
   # Compile UserCode + GeneratedC# + CoreSDK + C#SDK into a binary
-  ./build.sh "${BUILD_TOOL}"
+  ./build.sh
   popd
 done
 
