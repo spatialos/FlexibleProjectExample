@@ -23,12 +23,7 @@ fi
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"/src
   # Compile UserCode + GeneratedC# + CoreSDK + C#SDK into a binary
-  for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
-    ${BUILD_TOOL} CsharpWorker.sln /property:Configuration=Release /property:Platform="$PLATFORM"
-    cp -r bin ..
-    rm -rf bin
-    rm -rf obj
-  done
+  ./build.sh
   popd
 done
 

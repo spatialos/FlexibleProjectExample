@@ -8,8 +8,8 @@ WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client
 BUILD_DIR="$(pwd)"
 
 for WORKER in "${WORKER_DIRS[@]}"; do
-  pushd "${BUILD_DIR}/${WORKER}"
-  rm -rf bin
+  pushd "${BUILD_DIR}/${WORKER}/src"
+  ./clean.sh
   popd
 done
 
