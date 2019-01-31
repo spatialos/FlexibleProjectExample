@@ -6,7 +6,6 @@ cd "$(dirname "$0")"
 
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
 BUILD_DIR="$(pwd)"
-PACKAGES_DIR="$(pwd)/packages"
 
 for WORKER in "${WORKER_DIRS[@]}"; do
   pushd "${BUILD_DIR}/${WORKER}"
@@ -14,5 +13,6 @@ for WORKER in "${WORKER_DIRS[@]}"; do
   popd
 done
 
-rm -rf "${PACKAGES_DIR}"
+./clean_dependencies.sh
+
 rm -rf SpatialOS/schema/bin
