@@ -82,4 +82,4 @@ The platform name can be one of `macos`, `linux` or `windows`. Each of these can
 #### Cloud deployment configuration
 The cloud deployment configuration specifies how to launch the worker in the cloud. It's the same as the local deployment configuration at the moment, with the following exceptions:
 - A zip file containing the directory specified in `localBuildDirectory` will be uploaded to the cloud.
-- Additional fields will be added in the future, allowing you to specify where the worker binaries are uploaded.
+- We'll add additional fields in the future, allowing you to specify where the worker binaries are uploaded.
