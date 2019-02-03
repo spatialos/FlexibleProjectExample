@@ -24,6 +24,15 @@
       }
     },
     "localDeployment": {
+      "windows": {
+        "localBuildDirectory": "bin/x64/ReleaseWindows",
+        "command": "HelloWorker.exe",
+        "arguments": [
+          "${IMPROBABLE_RECEPTIONIST_HOST}",
+          "${IMPROBABLE_RECEPTIONIST_PORT}",
+          "${IMPROBABLE_WORKER_ID}"
+        ]
+      },
       "macos": {
         "localBuildDirectory": "bin/x64/ReleaseMacOS",
         "command": "mono",
@@ -40,15 +49,6 @@
         "command": "mono",
         "arguments": [
           "HelloWorker.exe",
-          "${IMPROBABLE_RECEPTIONIST_HOST}",
-          "${IMPROBABLE_RECEPTIONIST_PORT}",
-          "${IMPROBABLE_WORKER_ID}"
-        ]
-      },
-      "windows": {
-        "localBuildDirectory": "bin/x64/ReleaseWindows",
-        "command": "HelloWorker.exe",
-        "arguments": [
           "${IMPROBABLE_RECEPTIONIST_HOST}",
           "${IMPROBABLE_RECEPTIONIST_PORT}",
           "${IMPROBABLE_WORKER_ID}"

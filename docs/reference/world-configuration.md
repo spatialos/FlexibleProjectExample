@@ -14,7 +14,12 @@ The file may be called by any name but should have the following structure:
   },
   "loadBalancing": {
     "layerConfigurations": [
-      ...
+      {
+        "layer": "...",
+        "hexGrid": {
+          "numWorkers": ...
+        }
+      }
     ]
   },
   "snapshot": {
@@ -23,11 +28,11 @@ The file may be called by any name but should have the following structure:
   },
   "workerFlags": [
     {
-      "workerType": "worker1",
+      "workerType": "...",
       "flags": [
         {
-          "name": "flag1",
-          "value": "value1"
+          "name": "...",
+          "value": "..."
         }
       ]
     }

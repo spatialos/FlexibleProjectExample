@@ -38,9 +38,6 @@ function getPlatformName() {
 }
 PLATFORM_NAME=$(getPlatformName)
 BUILD_TOOL="msbuild"
-if isWindows; then
-  BUILD_TOOL="MSBuild.exe"
-fi
 
 retrievePackage() {
   TYPE=$1
