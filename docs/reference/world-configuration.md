@@ -43,6 +43,6 @@ The file may be called by any name but should have the following structure:
 | Field | Required/Optional | Description | 
 | :------------- | :------------- | :------- |
 | `dimensionsInWorldUnits` | Required | Describes how big the world should be. "x" and "z" parameters must both be greater than 0. |
-| `loadBalancing` | Required | The new load balancing configuration as documented in [load balancing with layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancer-config-2#load-balancing-with-layers). |
+| `loadBalancing` | Required | The new load balancing configuration as documented in [load balancing with layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancing). |
 | `snapshot` | Optional | Specifies which snapshot file to start the deployment from and how often to take a snapshot while the deployment is running. <br><br> It contains two optional fields: `takeSnapshotIntervalSeconds` (optional) and `startDeploymentFromSnapshotFile` (optional). |
 | `workerFlags` | Optional | Specifies any additional flags to pass to workers. Each element contains two fields: `workerType` (required) and `flags` (required). |
