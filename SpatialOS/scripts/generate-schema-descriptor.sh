@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e -x
+pushd "../"
 
 BUILD_DIR="$1"
 PACKAGES_DIR="$2"
@@ -27,3 +28,5 @@ mkdir -p "${OUT_DIR}"
   --load_all_schema_on_schema_path \
   "${SCHEMA_DIR}"/*.schema \
   "${PACKAGES_DIR}"/standard_library/improbable/*.schema
+
+popd

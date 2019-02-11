@@ -4,10 +4,12 @@ set -e -x
 
 cd "$(dirname "$0")"
 
+echo $(pwd)
+
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
 SDK_VERSION="13.5.1"
-BUILD_DIR="$(pwd)"
-TOOLS_DIR="$(pwd)/SpatialOS/tools/${SDK_VERSION}"
+BUILD_DIR="$(pwd)/../.."
+TOOLS_DIR="${BUILD_DIR}/SpatialOS/tools/${SDK_VERSION}"
 
 ./download_dependencies.sh "${SDK_VERSION}"
 

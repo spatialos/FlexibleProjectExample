@@ -5,7 +5,7 @@ set -e -x
 cd "$(dirname "$0")"
 
 SDK_VERSION="$1"
-TOOLS_DIR="$(pwd)/SpatialOS/tools/${SDK_VERSION}"
+TOOLS_DIR="$(pwd)/../tools/${SDK_VERSION}"
 mkdir -p "${TOOLS_DIR}"
 
 retrievePackage() {
@@ -60,7 +60,7 @@ retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "lib/improbable/sdk/${S
 retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "lib/improbable/sdk/${SDK_VERSION}/macos64"
 
 WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
-BUILD_DIR="$(pwd)"
+BUILD_DIR="$(pwd)/../.."
 moveLib() {
   # For each worker:
   for WORKER in "${WORKER_DIRS[@]}"; do
