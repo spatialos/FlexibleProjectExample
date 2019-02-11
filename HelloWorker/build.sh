@@ -7,8 +7,8 @@ BUILD_TOOL="msbuild"
 
 echo "${BUILD_PLATFORMS}"
 for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
-  ${BUILD_TOOL} CsharpWorker.sln /property:Configuration=Release /property:Platform="$PLATFORM"
-  cp -r bin ..
-  rm -rf bin
-  rm -rf obj
+  ${BUILD_TOOL} ./src/CsharpWorker.sln /property:Configuration=Release /property:Platform="$PLATFORM"
+  cp -r ./src/bin .
+  rm -rf ./src/bin
+  rm -rf ./src/obj
 done

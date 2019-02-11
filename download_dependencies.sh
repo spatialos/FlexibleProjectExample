@@ -4,16 +4,16 @@ set -e -x
 
 cd "$(dirname "$0")"
 
-PACKAGES_DIR="$1"
-SDK_VERSION="$2"
-mkdir -p "${PACKAGES_DIR}"
+SDK_VERSION="$1"
+TOOLS_DIR="$(pwd)/SpatialOS/tools/${SDK_VERSION}"
+mkdir -p "${TOOLS_DIR}"
 
 retrievePackage() {
   TYPE=$1
   PACKAGE=$2
   TARGETDIR=$3
 
-  pushd "${PACKAGES_DIR}"
+  pushd "${TOOLS_DIR}"
   if [ ! -d "${TARGETDIR}" ]; then
     spatial package get --force --unzip "${TYPE}" "${PACKAGE}" "${SDK_VERSION}" "${TARGETDIR}"
   fi
@@ -54,7 +54,19 @@ PLATFORM_NAME=$(getPlatformName)
 # * Core SDK for all platforms to enable building workers for MacOS, Windows or Linux
 retrievePackage "tools" "schema_compiler-x86_64-${PLATFORM_NAME}" "schema_compiler"
 retrievePackage "schema" "standard_library" "standard_library"
-retrievePackage "worker_sdk" "csharp" "lib/csharp"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-win32" "lib/win64"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "lib/linux64"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "lib/macos64"
+retrievePackage "worker_sdk" "csharp" "lib/improbable/sdk/${SDK_VERSION}/csharp"
+retrievePackage "worker_sdk" "core-dynamic-x86_64-win32" "lib/improbable/sdk/${SDK_VERSION}/win64"
+retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "lib/improbable/sdk/${SDK_VERSION}/linux64"
+retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "lib/improbable/sdk/${SDK_VERSION}/macos64"
+
+WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
+BUILD_DIR="$(pwd)"
+moveLib() {
+  # For each worker:
+  for WORKER in "${WORKER_DIRS[@]}"; do
+    cp -r "${TOOLS_DIR}/lib" "${BUILD_DIR}/${WORKER}"
+  done
+}
+
+moveLib
+rm -rf "${TOOLS_DIR}/lib"
