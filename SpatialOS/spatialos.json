@@ -1,7 +1,7 @@
 {
   "configurationVersion": "0.1",
   "projectName": "your_project_name_here",
-  "schemaDescriptor": "./schema/bin/schema.descriptor",
+  "schemaDescriptor": "./schema_out/schema.descriptor",
   "clientWorkers": [
     "../OtherWorkers/Interactive/client/improbable/client_worker.json"
   ],
