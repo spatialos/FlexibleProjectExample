@@ -21,6 +21,6 @@
   },
   "snapshot": {
     "takeSnapshotIntervalSeconds": "600",
-    "startDeploymentFromSnapshotFile": "../shared/default.snapshot"
+    "startDeploymentFromSnapshotFile": "./snapshots/default.snapshot"
   }
 }
