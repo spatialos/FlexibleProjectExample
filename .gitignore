@@ -5,14 +5,5 @@ logs/
 
 SpatialOS/schema_out
 SpatialOS/tools/
-client/bin/
-client/src/improbable/
-HelloWorker/bin/
-HelloWorker/lib/
-HelloWorker/src/improbable/
-DiceWorker/bin/
-DiceWorker/lib/
-DiceWorker/src/improbable/
-Interactive/client/lib/
 
 clean.sh
