@@ -12,13 +12,13 @@
   },
   "uploadConfiguration": {
     "windows": {
-      "localBuildDirectory": "../bin/x64/ReleaseWindows"
+      "localBuildDirectory": "../client/bin/x64/ReleaseWindows"
     },
     "macos": {
-      "localBuildDirectory": "../bin/x64/ReleaseMacOS"
+      "localBuildDirectory": "../client/bin/x64/ReleaseMacOS"
     },
     "linux": {
-      "localBuildDirectory": "../bin/x64/ReleaseLinux"
+      "localBuildDirectory": "../client/bin/x64/ReleaseLinux"
     }
   }
 }

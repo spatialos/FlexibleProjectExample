@@ -3,10 +3,10 @@
   "projectName": "your_project_name_here",
   "schemaDescriptor": "./schema_out/bin/schema.descriptor",
   "clientWorkers": [
-    "../client/improbable/client_worker.json"
+    "./client_worker_config.json"
   ],
   "serverWorkers": [
-    "../HelloWorker/hello_worker.json",
-    "../DiceWorker/worker_config.json"
+    "./hello_worker_config.json",
+    "./dice_worker_config.json"
   ]
 }
