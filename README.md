@@ -43,8 +43,8 @@ Run `./build.sh` to build the workers and compile the schema descriptor. You can
 
 Workers are built in their own bin directories:
 * HelloWorker: `HelloWorker/bin`
-* DiceWorker: `OtherWorkers/DiceWorker/bin`
-* Client: `OtherWorkers/Interactive/client/bin`
+* DiceWorker: `DiceWorker/bin`
+* Client: `client/bin`
 
 ## Cleaning the project
 Run `./clean.sh` to delete all build files, including worker binaries and any intermediate files generated during the build process.
@@ -57,7 +57,7 @@ $ spatial alpha local launch --launch_config ./launch_configs/deployment.json
 ``` 
 from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
-Now you can connect game clients. You can find the client binaries in `OtherWorkers/Interactive/client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac).
+Now you can connect game clients. You can find the client binaries in `client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac).
 Connect your client by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
 * Windows: `./Client.exe localhost 7777 <client_id>`
 * macOS: `mono --arch=64 Client.exe localhost 7777 <client_id>`

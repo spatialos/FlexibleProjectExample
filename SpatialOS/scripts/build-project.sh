@@ -6,7 +6,7 @@ cd "$(dirname "$0")"
 
 echo $(pwd)
 
-WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
+WORKER_DIRS=(HelloWorker DiceWorker client)
 SDK_VERSION="13.5.1"
 BUILD_DIR="$(pwd)/../.."
 TOOLS_DIR="${BUILD_DIR}/SpatialOS/tools/${SDK_VERSION}"

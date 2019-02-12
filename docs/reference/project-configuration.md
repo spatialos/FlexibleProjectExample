@@ -11,11 +11,11 @@ The file must be called `spatialos.json` and must have the following structure:
   "projectName": "demo",
   "schemaDescriptor": "./schema_out/bin/schema.descriptor",
   "clientWorkers": [
-    "../OtherWorkers/Interactive/client/improbable/client_worker.json"
+    "../client/improbable/client_worker.json"
   ],
   "serverWorkers": [
     "../HelloWorker/hello_worker.json",
-    "../OtherWorkers/DiceWorker/worker_config.json"
+    "../DiceWorker/worker_config.json"
   ]
 }
 ```

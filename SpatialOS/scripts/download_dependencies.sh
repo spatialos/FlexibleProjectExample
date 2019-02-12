@@ -59,7 +59,7 @@ retrievePackage "worker_sdk" "core-dynamic-x86_64-win32" "lib/improbable/sdk/${S
 retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "lib/improbable/sdk/${SDK_VERSION}/linux64"
 retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "lib/improbable/sdk/${SDK_VERSION}/macos64"
 
-WORKER_DIRS=(HelloWorker OtherWorkers/DiceWorker OtherWorkers/Interactive/client)
+WORKER_DIRS=(HelloWorker DiceWorker client)
 BUILD_DIR="$(pwd)/../.."
 moveLib() {
   # For each worker:
