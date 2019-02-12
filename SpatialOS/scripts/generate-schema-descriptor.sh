@@ -7,8 +7,8 @@ BUILD_DIR="$1"
 PACKAGES_DIR="$2"
 
 SCHEMA_DIR="${BUILD_DIR}"/SpatialOS/schema
-SCHEMA_BIN_DIR="${BUILD_DIR}"/SpatialOS/schema_out
-OUT_DIR="${SCHEMA_BIN_DIR}"/bin/generated/csharp
+SCHEMA_BIN_DIR="${BUILD_DIR}"/SpatialOS/schema_out/bin
+OUT_DIR="${SCHEMA_BIN_DIR}"/generated/csharp
 
 # Generate C# code from the schemas:
 mkdir -p "${OUT_DIR}"

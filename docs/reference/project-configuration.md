@@ -9,7 +9,7 @@ The file must be called `spatialos.json` and must have the following structure:
 {
   "configurationVersion": "0.1",
   "projectName": "demo",
-  "schemaDescriptor": "./schema/bin/schema.descriptor",
+  "schemaDescriptor": "./schema_out/bin/schema.descriptor",
   "clientWorkers": [
     "../OtherWorkers/Interactive/client/improbable/client_worker.json"
   ],
