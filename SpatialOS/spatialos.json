@@ -9,5 +9,5 @@
     "../HelloWorker/hello_worker.json",
     "../OtherWorkers/DiceWorker/worker_config.json"
   ],
-  "launch_config": "./deployment.json"
+  "launchConfig": "./deployment.json"
 }
