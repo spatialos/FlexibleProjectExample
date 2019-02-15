@@ -1,4 +1,3 @@
-
 # Example project using a flexible project layout
 
 > **Warning**: This project should be considered [alpha maturity](https://docs.improbable.io/reference/latest/shared/release-policy#maturity-stages) and is intended for early evaluation. Config files and worker directories are not laid out as best practice or as an example of good project layout - instead, they're laid out to demonstrate the flexibility now available in the project layout.
@@ -16,7 +15,7 @@ See the [SpatialOS documentation](https://docs.improbable.io/reference/latest) t
 
 Run `spatial update` to ensure you have the latest version of the `spatial` command line tool which includes the features required for this example project.
 
-Mac users: ensure that `xbuild` is on your PATH. `xbuild` is provided by Mono.
+Mac users: ensure that `msbuild` is on your PATH. `msbuild` is provided by Mono.
 
 Windows users: ensure that `MSBuild.exe` is on your PATH. `MSBuild.exe` is provided by the .NET Framework.
 
@@ -30,11 +29,9 @@ We've tested the project with the following:
 ## How do I use it?
 The custom layout is enabled by the `spatial` tool detecting a [new-format spatialos.json](docs/reference/project-configuration.md) file. 
 
-`spatial alpha local launch` and `spatial alpha cloud launch` work differently for a flexible project. You only get access to the new versions of these commands when you are **either**:
-* inside a directory containing a new-format `spatialos.json`, **or** 
-* when referencing a new-format `spatialos.json` using the `--main_config` flag
-
-Both `spatial alpha local launch` and `spatial alpha cloud launch` have a new parameter, `--world`, which points to a world configuration file. This flag is required to launch a deployment, although by default a file named [`world.json`](docs/reference/world-configuration.md) in the current working directory will be used if you don't pass the flag in.
+We have introduced three new spatial CLI commands under the `alpha` subcommand: `spatial alpha local launch`, `spatial alpha cloud upload` and `spatial alpha cloud launch`. These commands only work for FPL projects. In order to use them, you need to:
+* be inside a directory containing a FPL-format `spatialos.json`, **or** 
+* reference a FPL-format `spatialos.json` using the `--main_config` flag
 
 You can access this information at any time by using the `--help` flag in the `spatial` command line tool.
 
@@ -47,39 +44,50 @@ Workers are built in their own bin directories:
 * Client: `OtherWorkers/Interactive/client/bin`
 
 ## Cleaning the project
-Run `./clean.sh` to delete all build files, including worker binaries and any intermediate files generated during the build process.
+Run `./clean.sh` to delete all build files, including worker binaries and any intermediate files generated during the build process. Alternatively, run `git clean -xdf`.
 
-## Running the project
+## Running the project locally
 
-To launch a local instance of SpatialOS running the project,  run 
+To launch a local instance of SpatialOS running the project, run
 ```bash
-$ spatial alpha local launch --launch_config ./deployment.json
-``` 
+$ spatial alpha local launch
+```
 from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
-Now you can connect game clients. You can find the client binaries in `OtherWorkers/Interactive/client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac).
-Connect your client by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
+You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](docs/reference/launch-configuration.md) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](docs/reference/project-configuration.md) as a fall back.
+
+As soon as your deployment is running, you can connect client-workers to it. You can find the client-worker binaries in `OtherWorkers/Interactive/client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac). Connect your client-worker by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
 * Windows: `./Client.exe localhost 7777 <client_id>`
 * macOS: `mono --arch=64 Client.exe localhost 7777 <client_id>`
 
-This connects a client that pings the `HelloWorker` and `DiceWorker` every few seconds and then prints the response.
+This connects a client-worker that pings the `HelloWorker` and `DiceWorker` every few seconds and then prints the response.
 
-## Logs location
+### Logs location
 The logs are stored in `logs` subdirectory of the location where your `spatialos.json` file is. For example, if my `spatialos.json` file is in `/workspace/project/SpatialOS`, the SpatialOS logs will go to `/workspace/project/SpatialOS/logs`.
 
+## Running the project in the cloud
+
+To upload your project assembly to the cloud:
+```bash
+$ spatial alpha cloud upload -a <your-assembly-name>
+```
+
+To start a deployment in the cloud:
+```bash
+$ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
+```
+
 ## Known Issues
-* Our [Launcher](https://docs.improbable.io/reference/latest/shared/operate/launcher#the-launcher) currently only supports Unity and Unreal based [client-workers](docs/reference/client-worker-configuration.md). As a result, if you deploy this project to the cloud, you can't start the client-worker provided in this project from the Launcher.
+There are no known issues at the moment.
 
 ## Reference documentation
-[Main project configuration](docs/reference/project-configuration.md)
+[Project configuration file](docs/reference/project-configuration.md)
 
-[World configuration](docs/reference/world-configuration.md)
+[Launch configuration file](docs/reference/launch-configuration.md)
 
-[Deployment launch configuration](docs/reference/deployment-launch-configuration.md)
+[Server worker configuration file](docs/reference/server-worker-configuration.md)
 
-[Server worker configuration](docs/reference/server-worker-configuration.md)
-
-[Client worker configuration](docs/reference/client-worker-configuration.md)
+[Client worker configuration file](docs/reference/client-worker-configuration.md)
 
 ## Migration Guide
 [FAQ](docs/migration-guide/faq.md)

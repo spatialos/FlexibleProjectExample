@@ -1,3 +1,27 @@
 {
-  "template": "small"
+  "template": "small",
+  "dimensionsInWorldUnits": {
+    "x": 1000,
+    "z": 1000
+  },
+  "loadBalancing": {
+    "layerConfigurations": [
+      {
+        "layer": "dice",
+        "hexGrid": {
+          "numWorkers": 2
+        }
+      },
+      {
+        "layer": "greetings",
+        "hexGrid": {
+          "numWorkers": 2
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "takeSnapshotIntervalSeconds": "600",
+    "startDeploymentFromSnapshotFile": "./snapshots/default.snapshot"
+  }
 }
