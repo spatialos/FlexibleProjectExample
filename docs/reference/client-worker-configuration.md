@@ -76,23 +76,13 @@ The upload configuration specifies how to start a client-worker instance with th
           "${IMPROBABLE_WORKER_ID}",
           "--my_additional_flag=true"
         ]
-      },
-      "linux": {
-        "localBuildDirectory": "bin/x64/ReleaseLinux",
-        "launcherCommand": "MyWorker",
-        "launcherArguments": [
-          "${IMPROBABLE_RECEPTIONIST_HOST}",
-          "${IMPROBABLE_RECEPTIONIST_PORT}",
-          "${IMPROBABLE_WORKER_ID}",
-          "--my_additional_flag=true"
-        ]
       }
 ```
 
-There must be a configuration for each platform the worker will be run on. The platform name can be one of `windows`, `macos` or `linux`. Each of these can have the following fields:
+There must be a configuration for each platform the worker will be run on. The platform name can be one of `windows` or `macos`. Each of these can have the following fields:
 
 | Field | Required/Optional | Description | 
 | :------------- | :------------- | :------- |
 | `localBuildDirectory` | Required | The directory containing the binary to be executed. <br><br> **Note:** Your built-out worker must be self-contained in the `localBuildDirectory` and all files that your worker might depend on while running must be in this folder. Files outside this folder will not be uploaded to the cloud as part of your project assembly. |
-| `launcherCommand` | Required | The base command to be executed to start a worker instance. |
-| `launcherArguments` | Required | A list of arguments to provide to the base command. The arguments can contain placeholder strings, like `{IMPROBABLE_RECEPTIONIST_HOST}`, which are interpolated by SpatialOS when the worker is launched. For a full list of supported placeholder strings, see our documentation on the [worker launch configuration file](https://docs.improbable.io/reference/latest/shared/worker-configuration/launch-configuration). |
+| `launcherCommand` | Optional | The base command to be executed to start a client-worker when using the [Launcher](https://docs.improbable.io/reference/latest/shared/operate/launcher#the-launcher). <br><br> **Note:** To use the launcher with this client-worker, the `workerType` has to be `LauncherClient`. |
+| `launcherArguments` | Optional | A list of arguments to provide to the `launcherCommand` when Launcher is starting the client. The arguments can contain placeholder strings, like `${IMPROBABLE_LOGIN_TOKEN}`, which are interpolated by SpatialOS when the client is launched. The allowed placeholders are: <br><br>- `${IMPROBABLE_PROJECT_NAME}` - the project name that the client should log in to. <br>- `${IMPROBABLE_DEPLOYMENT_NAME}` - the deployment name that the client should log in to. <br>- `${IMPROBABLE_LOGIN_TOKEN}` - the login token that should be used to log in to the deployment. <br>- `${IMPROBABLE_PLAYER_IDENTITY_TOKEN}` - the player identity token that should be used to log in to the deployment. <br>- `${IMPROBABLE_LOCATOR_HOSTNAME}` - the hostname of the Locator, which should be used to log in. <br>- `${IMPROBABLE_API_URL}` - the URL of Improbable API services, if the client requires to use it. |
