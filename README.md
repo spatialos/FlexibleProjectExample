@@ -74,8 +74,10 @@ $ spatial alpha cloud upload -a <your-assembly-name>
 
 To start a deployment in the cloud:
 ```bash
-$ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
+$ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name> --snapshot=./snapshots/default.snapshot
 ```
+
+As above, you can run these commands from the /SpatialOS directory or use the `--main_config=\<path to spatialos.json\>` flag to point to your project config when running the commands from another directory.
 
 ## Known Issues
 There are no known issues at the moment.
