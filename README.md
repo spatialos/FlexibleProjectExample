@@ -52,7 +52,7 @@ To launch a local instance of SpatialOS running the project, run
 ```bash
 $ spatial alpha local launch
 ```
-from the SpatialOS directory (or from any location by adding the `--main_config=\<path to spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
+from the `SpatialOS` directory (or from any location by adding the `--main_config=\<path to your spatialos.json\>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
 You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](docs/reference/launch-configuration.md) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](docs/reference/project-configuration.md) as a fall back.
 
@@ -77,7 +77,7 @@ To start a deployment in the cloud:
 $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 ```
 
-As above, you can run these commands from the /SpatialOS directory or use the `--main_config=\<path to spatialos.json\>` flag to point to your project config when running the commands from another directory.
+As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=\<path to your spatialos.json\>` flag to point to your project config when running the commands from another directory.
 
 ## Known Issues
 There are no known issues at the moment.
