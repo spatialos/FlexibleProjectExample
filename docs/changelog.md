@@ -1,6 +1,6 @@
 # Changelog
 
-* **20 Feb 2019:**
+* **22 Feb 2019:**
   * Added the [Building a worker executable](build-process/worker-build-process.md) documentation page.
   * Added the [Building a schema descriptor](build-process/schema-descriptor-build-process.md) documentation page.
   * Added the [Migration guide](migration-guide/migration-guide-master-page.md) documentation page.
@@ -14,7 +14,7 @@
   * Added a `launchConfig` field in the [project configuration](reference/project-configuration.md).
   * Added `loginRateLimit` and `connectionCapacityLimit` fields to the [client-worker configuration](reference/client-worker-configuration.md).
   * Added `launcherCommand` and `launcherArguments` fields to the `uploadConfiguration` section of the [client-worker configuration](reference/client-worker-configuration.md).
-* **30 Jan 2019:** 
+* **03 Feb 2019:** 
   * Moved the snapshot file from `./shared`  to `./SpatialOS/snapshots`.
   * Added this changelog.
   * Added a known issues section to the [readme](../README.md#known-issues).
