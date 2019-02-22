@@ -25,7 +25,15 @@ The file may be called by any name but should have the following structure:
     ...
   },
   "permissions": {
-    ...
+    "entity_creation": {
+        "allow": true
+    },
+    "entity_deletion": {
+        "allow": true
+    },
+    "entity_query": {
+        "allow": true
+    }
   },
   "uploadConfiguration": {
     ...
@@ -48,7 +56,7 @@ The file may be called by any name but should have the following structure:
 | `streamingQuery` | Optional | Specifies the streaming queries the bridge will subscribe to. Analogous to [`streaming_query` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#streaming-queries). |
 | `componentDelivery` | Optional | Specifies the delivery settings for the worker's components. Analogous to [`component_delivery` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#component-delivery). |
 | `componentSettings` | Optional | Defines component specific settings. Analogous to [`component_settings` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#component-settings). |
-| `permissions` | Optional | Specifies the worker's entity permissions. Analogous to [`permissions` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions). |
+| `permissions` | Optional | Specifies the worker's entity permissions. Analogous to [`permissions` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions), with the difference that the permissions property here is a single permission object rather than an array. |
 | `uploadConfiguration` | Optional | Describes how to start the worker. If provided, the `spatial alpha cloud upload` CLI command uploads the built-out client-worker executable, enabling you to use it with the [Launcher](https://docs.improbable.io/reference/latest/shared/operate/launcher#the-launcher). See below for more information. |
 | `loginRateLimit` | Optional | Defines an upper limit for the frequency at which worker instances of this worker type are allowed to connect to a single deployment. It contains two fields: <br> - `duration`: time window of the login rate limit to be specified as a string in the form of `<x>h<y>m<z>s`, e.g. `1h30s` <br> - `requestsPerDuration`: Maximum number of worker instances that is allowed to connect during the given duration <br><br> For more information, see [Worker connection limits](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-rate-limit-capacity). |
 | `connectionCapacityLimit` | Optional | Defines an upper limit for how many worker instances of this worker type may be simultaneously connected to a single deplyoment. It has a single field (`maxCapacity`) for specifying the maximum number of connected worker instances. <br><br> For more information, see [Worker connection limits](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-rate-limit-capacity). |

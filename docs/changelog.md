@@ -1,5 +1,10 @@
 # Changelog
 
+* **20 Feb 2019:**
+  * Added the [Building a worker executable](build-process/worker-build-process.md) documentation page.
+  * Added the [Building a schema descriptor](build-process/schema-descriptor-build-process.md) documentation page.
+  * Added the [Migration guide](migration-guide/migration-guide-master-page.md) documentation page.
+  * Added the [Converting project configuration files](migration-guide/configs-conversion-guide.md) documentation page.
 * **15 Feb 2019:**
   * `spatial local launch`, `spatial cloud upload` and `spatial cloud launch` no longer work with FPL projects anymore. Please use the respective `alpha` commands (`spatial alpha local launch`, `spatial alpha cloud upload` and `spatial alpha cloud launch`) going forward.
   * Changed the signature of the `spatial alpha cloud upload` and `spatial alpha cloud launch` CLI commands: Replaced all positional arguments with mandatory flags. For more information, please run the commands with the `--help` flag.

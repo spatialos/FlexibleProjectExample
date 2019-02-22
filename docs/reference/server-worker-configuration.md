@@ -25,7 +25,15 @@ The file may be called by any name but should have the following structure:
     ...
   },
   "permissions": {
-    ...
+    "entity_creation": {
+        "allow": true
+    },
+    "entity_deletion": {
+        "allow": true
+    },
+    "entity_query": {
+        "allow": true
+    }
   },
   "launchConfiguration": {
     "localDeployment": {
@@ -46,7 +54,7 @@ The file may be called by any name but should have the following structure:
 | `streamingQuery` | Optional | Specifies the streaming queries the bridge will subscribe to. Analogous to [`streaming_query` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#streaming-queries). |
 | `componentDelivery` | Optional | Specifies the delivery settings for the worker's components. Analogous to [`component_delivery` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#component-delivery). |
 | `componentSettings` | Optional | Defines component specific settings. Analogous to [`component_settings` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#component-settings). |
-| `permissions` | Optional | Specifies the worker's entity permissions. Analogous to [`permissions` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions), with a difference that the permissions property here is a single permission object rather than an array. |
+| `permissions` | Optional | Specifies the worker's entity permissions. Analogous to [`permissions` in the previous configuration version](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions), with the difference that the permissions property here is a single permission object rather than an array. |
 | `launchConfiguration` | Required | Describes how to start a worker instance. It contains two fields: <br> - `localDeployment`: Specifies how to start a worker instance locally. See below for more information. <br> - `cloudDeployment`: Specifies how to start a worker instance in the cloud. See below for more information. |
 
 #### Local deployment configuration
@@ -94,8 +102,7 @@ There must be a configuration for each platform the worker will be run on. The p
 | `arguments` | Required | A list of arguments to provide to the base command. The arguments can contain placeholder strings, like `{IMPROBABLE_RECEPTIONIST_HOST}`, which are interpolated by SpatialOS when the worker is launched. For a full list of supported placeholder strings, see our documentation on [worker launch configurations](https://docs.improbable.io/reference/latest/shared/worker-configuration/launch-configuration). |
 
 #### Cloud deployment configuration
-The cloud deployment configuration specifies how to launch a server-worker instance in the cloud. It's the same as the local deployment configuration at the moment, with the following exceptions:
+The cloud deployment configuration specifies how to launch a server-worker instance in the cloud. It is the same as the local deployment configuration at the moment, with the following exceptions:
+- We only support the `linux` platform because worker instances are always run in an Linux environment in the cloud.
 - A zip file containing the directory specified in `localBuildDirectory` will be uploaded to the cloud.
 - We'll add additional fields in the future, allowing you to specify where the worker binaries are uploaded.
-
-Note: We only support the `linux` platform for cloud deployment configurations because worker instances are always run in an Linux environment in the cloud.
