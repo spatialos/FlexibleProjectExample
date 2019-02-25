@@ -15,15 +15,15 @@ Below is a summary of how to populate the fields of an FPL worker configuration 
 | FPL format | CPL format |
 | --- | --- |
 | `workerType` | Part of the name of your worker configuration file, i.e. `spatialos.<my-worker-type>.worker.json` |
-| `layer` | In your worker configuration file, the `bridge/worker_attribute_set/attributes` field |
-| `entityInterest` | `bridge/entity_interest` field in your worker configuration file |
-| `streamingQuery` | `bridge/streaming_query` field in your worker configuration file |
-| `componentDelivery` | `bridge/component_delivery` field in your worker configuration file |
-| `componentSettings` | `bridge/component_settings` field in your worker configuration file |
-| `permissions` | Similar to the `workers/<my-worker-type>/permissions` field in your [launch configuration file](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#launch-configuration-file), with the difference that the permissions property here is a single [permission object](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions#worker-permissions) rather than an array |
-| `uploadConfiguration/<platform>/localBuildDirectory` (client-worker only) | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/client-worker-configuration.md) for information on how to populate this field |
-| `launchConfiguration/<platform>/localBuildDirectory` (server-worker only) | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/client-worker-configuration.md) for information on how to populate this field |
-| `launchConfiguration/<localDeployment, cloudDeployment>/<platform>/<command, arguments>` (server-worker only) | `managed/<platform>/<command, arguments>` field in your worker configuration file |
+| `layer` | In your worker configuration file, the `bridge.worker_attribute_set.attributes` field |
+| `entityInterest` | `bridge.entity_interest` field in your worker configuration file |
+| `streamingQuery` | `bridge.streaming_query` field in your worker configuration file |
+| `componentDelivery` | `bridge.component_delivery` field in your worker configuration file |
+| `componentSettings` | `bridge.component_settings` field in your worker configuration file |
+| `permissions` | Similar to the `workers.<my-worker-type>.permissions` field in your [launch configuration file](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#launch-configuration-file), with the difference that the permissions property here is a single [permission object](https://docs.improbable.io/reference/latest/shared/worker-configuration/permissions#worker-permissions) rather than an array |
+| `uploadConfiguration.<platform>.localBuildDirectory` (client-worker only) | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/client-worker-configuration.md) for information on how to populate this field |
+| `launchConfiguration.<platform>.localBuildDirectory` (server-worker only) | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/client-worker-configuration.md) for information on how to populate this field |
+| `launchConfiguration.<localDeployment, cloudDeployment>.<platform>.<command, arguments>` (server-worker only) | `managed.<platform>.<command, arguments>` field in your worker configuration file |
 
 **Notes:**
 - The `build` field in the CPL worker configuration file is obsolete and does not have an equivalent in the FPL. In the FPL, you fully manage the build process of a worker. For more information, see [Building a worker executable in the FPL](../build-process/worker-build-process.md).
@@ -38,18 +38,18 @@ Below is a summary of how to populate the fields of an FPL launch configuration 
 | FPL format | CPL format |
 | --- | --- |
 | `template` | `template` field in your launch configuration file |
-| `dimensionsInWorldUnits/<x, z>` | `world/dimensions/<xMeters, zMeters>` field in your launch configuration file |
+| `dimensionsInWorldUnits.<x, z>` | `world.dimensions.<xMeters, zMeters>` field in your launch configuration file |
 | `loadBalancing` | `load_balancing` field in your launch configuration file |
 | `snapshot` | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/deployment-launch-configuration.md) for information on how to populate this field |
-| `takeSnapshotIntervalSeconds` | `world/snapshots/snapshot_write_period_seconds` field in your launch configuration file |
+| `takeSnapshotIntervalSeconds` | `world.snapshots.snapshot_write_period_seconds` field in your launch configuration file |
 | `startDeploymentFromSnapshotFile`| No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/deployment-launch-configuration.md) for information on how to populate this field |
-| `workerFlags/<elem>/<workerType, flags>` | `workers/<elem>/<worker_type, flags>` field in your launch configuration file |
-| `streamingQueryInterval` | `world/streaming_query_interval` field in your launch configuration file |
-| `runtimeFlags` | `world/legacy_flag` field in your launch configuration file |
+| `workerFlags.<elem>.<workerType, flags>` | `workers.<elem>.<worker_type, flags>` field in your launch configuration file |
+| `streamingQueryInterval` | `world.streaming_query_interval` field in your launch configuration file |
+| `runtimeFlags` | `world.legacy_flag` field in your launch configuration file |
 
 **Notes:**
-- The `world/legacy_javaparams` field in the CPL launch configuration file is obsolete and does not have an equivalent in the FPL.
-- The `world/chunk_edge_length_meters` field in CPL launch configuration file is obsolete and does not have an equivalent in the FPL. In the FPL, this parameter has a fixed value of 100. You might need to adapt the [entity interest](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#entity-interest) configuration of your workers to account for the change in this value when you migrate a project from the CPL to the FPL.
+- The `world.legacy_javaparams` field in the CPL launch configuration file is obsolete and does not have an equivalent in the FPL.
+- The `world.chunk_edge_length_meters` field in CPL launch configuration file is obsolete and does not have an equivalent in the FPL. In the FPL, this parameter has a fixed value of 100. You might need to adapt the [entity interest](https://docs.improbable.io/reference/latest/shared/worker-configuration/bridge-config#entity-interest) configuration of your workers to account for the change in this value when you migrate a project from the CPL to the FPL.
 
 ## Converting the project definition file
 [Reference documentation for the CPL format](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatialos-json#project-definition-file-spatialos-json)<br/>
