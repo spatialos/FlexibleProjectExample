@@ -1,6 +1,6 @@
 {
-  "workerType": "HelloWorker",
-  "layer": "greetings",
+  "workerType": "DiceWorker",
+  "layer": "dice",
   "entityInterest": {
     "rangeEntityInterest": {
       "radius": 2
@@ -13,10 +13,10 @@
   "launchConfiguration": {
     "cloudDeployment": {
       "linux": {
-        "localBuildDirectory": "bin/x64/ReleaseLinux",
+        "localBuildDirectory": "../DiceWorker/bin/x64/ReleaseLinux",
         "command": "mono",
         "arguments": [
-          "HelloWorker.exe",
+          "DiceWorker.exe",
           "${IMPROBABLE_RECEPTIONIST_HOST}",
           "${IMPROBABLE_RECEPTIONIST_PORT}",
           "${IMPROBABLE_WORKER_ID}"
@@ -25,8 +25,8 @@
     },
     "localDeployment": {
       "windows": {
-        "localBuildDirectory": "bin/x64/ReleaseWindows",
-        "command": "HelloWorker.exe",
+        "localBuildDirectory": "../DiceWorker/bin/x64/ReleaseWindows",
+        "command": "DiceWorker.exe",
         "arguments": [
           "${IMPROBABLE_RECEPTIONIST_HOST}",
           "${IMPROBABLE_RECEPTIONIST_PORT}",
@@ -34,21 +34,21 @@
         ]
       },
       "macos": {
-        "localBuildDirectory": "bin/x64/ReleaseMacOS",
+        "localBuildDirectory": "../DiceWorker/bin/x64/ReleaseMacOS",
         "command": "mono",
         "arguments": [
           "--arch=64",
-          "HelloWorker.exe",
+          "DiceWorker.exe",
           "${IMPROBABLE_RECEPTIONIST_HOST}",
           "${IMPROBABLE_RECEPTIONIST_PORT}",
           "${IMPROBABLE_WORKER_ID}"
         ]
       },
       "linux": {
-        "localBuildDirectory": "bin/x64/ReleaseLinux",
+        "localBuildDirectory": "../DiceWorker/bin/x64/ReleaseLinux",
         "command": "mono",
         "arguments": [
-          "HelloWorker.exe",
+          "DiceWorker.exe",
           "${IMPROBABLE_RECEPTIONIST_HOST}",
           "${IMPROBABLE_RECEPTIONIST_PORT}",
           "${IMPROBABLE_WORKER_ID}"

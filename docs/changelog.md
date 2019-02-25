@@ -1,5 +1,15 @@
 # Changelog
 
+* **25 Feb 2019:**
+  * Added a `build.sh` script for each worker type so that you can build them individually.
+  * Added a `download_dependencies.sh` script to `SpatialOS/scripts/` for downloading the project dependencies from the SpatialOS SDK.
+  * Added a `generate-schema-descriptor.sh` script to `SpatialOS/scripts/` for generating a schema descriptor from the project schema. 
+  * Added a `utils.sh` script to `SpatialOS/scripts` for defining various paths and methods to be used when building the project.
+  * Added a `build-project.sh` script to `SpatialOS/scripts/` for fully building the project.
+  * Removed `build.sh` and `clean.sh` from `SpatialOS/`.
+  * Moved `deployment.json` from `SpatialOS/` to `SpatialOS/launch_configs/`.
+  * Modified the `*.csproj` of all worker projects so that all dependencies point to files inside the worker directory.
+  * Flattened all worker type folders into the top directory and modified `SpatialOS/spatialos.json` to reflect the changes.
 * **22 Feb 2019:**
   * Added the [Building a worker executable](build-process/worker-build-process.md) documentation page.
   * Added the [Building a schema descriptor](build-process/schema-descriptor-build-process.md) documentation page.

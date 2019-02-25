@@ -1,7 +1,7 @@
 # Building a worker executable
 This page explains how to build a [worker](https://docs.improbable.io/reference/latest/shared/glossary#worker) in a SpatialOS project using the flexible project layout (FPL). It also serves as a guide on how to migrate the build process of a worker from the [current project layout (CPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the FPL. Refer to our [Migration guide](../migration-guide/migration-guide-master-page.md) for a summary of additional migration steps.
 
-We provide a reference implementation for building a C# worker that includes all worker build steps described in this guide. You can find it in the form of a shell script [here](../../build.sh).
+We provide a reference implementation for building a C# worker that includes all worker build steps described in this guide. You can find it in the form of a shell script [here](../../SpatialOS/scripts/build_project.sh).
 
 ## Worker build process overview
 To build a worker in the FPL, you need to:

@@ -3,11 +3,11 @@
   "projectName": "your_project_name_here",
   "schemaDescriptor": "./schema/bin/schema.descriptor",
   "clientWorkers": [
-    "../OtherWorkers/Interactive/client/improbable/client_worker.json"
+    "./client_worker_config.json"
   ],
   "serverWorkers": [
-    "../HelloWorker/hello_worker.json",
-    "../OtherWorkers/DiceWorker/worker_config.json"
+    "./hello_worker_config.json",
+    "./dice_worker_config.json"
   ],
-  "launchConfig": "./deployment.json"
+  "launchConfig": "./launch_configs/deployment.json"
 }

@@ -11,11 +11,11 @@ The file must be called `spatialos.json` and must have the following structure:
   "projectName": "demo",
   "schemaDescriptor": "./schema/bin/schema.descriptor",
   "clientWorkers": [
-    "../OtherWorkers/Interactive/client/improbable/client_worker.json"
+    "./client_worker_config.json"
   ],
   "serverWorkers": [
-    "../HelloWorker/hello_worker.json",
-    "../OtherWorkers/DiceWorker/worker_config.json"
+    "./hello_worker_config.json",
+    "./worker_config_config.json"
   ],
   "launchConfig": "./launch_configs/deployment.json"
 }

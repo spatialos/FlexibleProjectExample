@@ -17,7 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Improbable.WorkerSdkCsharp, Version=13.5.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\lib\csharp\Improbable.WorkerSdkCsharp.dll</HintPath>
+      <HintPath>..\lib\improbable\sdk\13.5.1\csharp\Improbable.WorkerSdkCsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -25,25 +25,25 @@
     <Compile Include="HelloWorker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\packages\lib\linux64\libCoreSdkDll.so">
+    <Content Include="..\lib\improbable\sdk\13.5.1\linux64\libCoreSdkDll.so">
       <Link>libCoreSdkDll.so</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\packages\lib\macos64\libCoreSdkDll.dylib">
+    <Content Include="..\lib\improbable\sdk\13.5.1\macos64\libCoreSdkDll.dylib">
       <Link>libCoreSdkDll.dylib</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\packages\lib\win64\CoreSdkDll.dll">
+    <Content Include="..\lib\improbable\sdk\13.5.1\win64\CoreSdkDll.dll">
       <Link>CoreSdkDll.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\packages\lib\win64\CoreSdkDll.lib">
+    <Content Include="..\lib\improbable\sdk\13.5.1\win64\CoreSdkDll.lib">
       <Link>CoreSdkDll.lib</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\SpatialOS\schema\bin\generated\csharp\**\*.cs" />
+    <Compile Include=".\improbable\generated\**\*.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
