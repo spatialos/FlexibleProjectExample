@@ -36,7 +36,7 @@ We have introduced three new spatial CLI commands under the `alpha` subcommand: 
 You can access this information at any time by using the `--help` flag in the `spatial` command line tool.
 
 ## Building the project
-Run `./SpatialOS/scripts/build-project.sh` to build the workers and compile the schema descriptor. You can complete these steps manually if required.
+Run `./SpatialOS/scripts/build_project.sh` to build the workers and compile the schema descriptor. You can complete these steps manually if required.
 
 Workers are built in their own bin directories:
 * HelloWorker: `HelloWorker/bin`
