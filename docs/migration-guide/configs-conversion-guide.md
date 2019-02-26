@@ -31,7 +31,7 @@ Below is a summary of how to populate the fields of an FPL worker configuration 
 
 ## Converting the launch configuration file
 [Reference documentation for the CPL format](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#launch-configuration-file)<br/>
-[Reference documentation for the FPL format](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/deployment-launch-configuration.md)
+[Reference documentation for the FPL format](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md)
 
 Below is a summary of how to populate the fields of an FPL launch configuration file based on the state of your existing CPL project:
 
