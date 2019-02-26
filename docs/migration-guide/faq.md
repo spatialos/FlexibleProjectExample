@@ -10,4 +10,4 @@ We don't support those commands going forward. The build process of a worker is 
 We don't support`spatial local worker launch` going forward. Please start and connect your worker to a deployment manually as shown in the [readme](../../README.md#Running-the-project).
 
 **Do you support `spatial project history snapshot convert`?**<br/>
-We don't support `spatial project history snapshot convert` at the moment but are planning to provide this functionality in the future.
+We don't support `spatial project history snapshot convert` going forward. Please convert the format of your snapshots manually using the [snapshot converter tool](https://docs.improbable.io/reference/latest/shared/operate/snapshots#using-the-snapshot-converter-directly). You can refer to [`convert_snapshot.sh`](../../SpatialOS/scripts/convert_snapshot.sh) for a code example.

@@ -16,14 +16,16 @@ retrievePackage() {
 }
 
 # Download and unzip the project dependencies from the SpatialOS SDK:
-# * Schema compiler (tools folder)
-# * C# SDK (lib folder)
-# * Core SDK for Windows, MacOs and Linux (lib folder)
-# * Standard schema library (schema/improbable folder)
+# * Schema compiler (tools folder): Generates component API code for workers and the schema descriptor
+# * Snapshot converter (tools folder): Convert the format of a snapshot file from binary to text or vice versa, not needed for building a project
+# * C# SDK library (lib folder): Functionalities for letting a program participate in a SpatialOS simulation as a worker
+# * Core SDK library for Windows, MacOs and Linux (lib folder): Functionalities for letting a program participate in a SpatialOS simulation as a worker
+# * Standard schema library (schema/improbable folder): Common SpatialOS component definitions
 
 mkdir -p "${TOOLS_DIR}"
 pushd "${TOOLS_DIR}"
 retrievePackage "tools" "schema_compiler-x86_64-${PLATFORM_NAME}" "schema_compiler"
+retrievePackage "tools" "snapshot_converter-x86_64-${PLATFORM_NAME}" "snapshot_converter"
 popd
 
 mkdir -p "${LIB_DIR}"

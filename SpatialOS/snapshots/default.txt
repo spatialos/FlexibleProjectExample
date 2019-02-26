@@ -1,0 +1,106 @@
+entity {
+  entity_id: 1
+  entity_state {
+    [schema.improbable.EntityAcl.component_extension] {
+      field1_read_acl {
+        field1_attribute_set {
+          field1_attribute: "dice"
+        }
+        field1_attribute_set {
+          field1_attribute: "client"
+        }
+      }
+      field2_component_write_acl {
+        key: 50
+        value {
+          field1_attribute_set {
+            field1_attribute: "dice"
+          }
+        }
+      }
+      field2_component_write_acl {
+        key: 54
+        value {
+          field1_attribute_set {
+            field1_attribute: "dice"
+          }
+        }
+      }
+      field2_component_write_acl {
+        key: 101
+        value {
+          field1_attribute_set {
+            field1_attribute: "dice"
+          }
+        }
+      }
+    }
+    [schema.improbable.Metadata.component_extension] {
+      field1_entity_type: "AuthorityMarker"
+    }
+    [schema.improbable.Position.component_extension] {
+      field1_coords {
+        field1_x: 0
+        field2_y: 0
+        field3_z: 0
+      }
+    }
+    [schema.improbable.Persistence.component_extension] {
+    }
+    [schema.demo.PingResponder.component_extension] {
+    }
+  }
+}
+entity {
+  entity_id: 2
+  entity_state {
+    [schema.improbable.EntityAcl.component_extension] {
+      field1_read_acl {
+        field1_attribute_set {
+          field1_attribute: "greetings"
+        }
+        field1_attribute_set {
+          field1_attribute: "client"
+        }
+      }
+      field2_component_write_acl {
+        key: 50
+        value {
+          field1_attribute_set {
+            field1_attribute: "greetings"
+          }
+        }
+      }
+      field2_component_write_acl {
+        key: 54
+        value {
+          field1_attribute_set {
+            field1_attribute: "greetings"
+          }
+        }
+      }
+      field2_component_write_acl {
+        key: 101
+        value {
+          field1_attribute_set {
+            field1_attribute: "greetings"
+          }
+        }
+      }
+    }
+    [schema.improbable.Metadata.component_extension] {
+      field1_entity_type: "AuthorityMarker"
+    }
+    [schema.improbable.Position.component_extension] {
+      field1_coords {
+        field1_x: 0
+        field2_y: 0
+        field3_z: 0
+      }
+    }
+    [schema.improbable.Persistence.component_extension] {
+    }
+    [schema.demo.PingResponder.component_extension] {
+    }
+  }
+}

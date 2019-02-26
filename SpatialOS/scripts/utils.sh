@@ -12,6 +12,7 @@ TOOLS_DIR="$(pwd)/../tools/${SDK_VERSION}"
 LIB_DIR="$(pwd)/../lib/${SDK_VERSION}"
 SCHEMA_DIR="$(pwd)/../schema"
 SCHEMA_BIN_DIR="${SCHEMA_DIR}/bin"
+SNAPSHOTS_DIR="$(pwd)/../snapshots"
 
 # Returns platform name of this machine
 function getPlatformName() {

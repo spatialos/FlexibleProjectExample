@@ -1,5 +1,8 @@
 # Changelog
 
+* **25 Feb 2019:** 
+  * Added a `convert_snapshot.sh` script to `SpatialOS/scripts/` to demonstrate how to use the [snapshot converter tool](https://docs.improbable.io/reference/latest/shared/operate/snapshots#using-the-snapshot-converter-directly).
+  * Added a `default.txt` file to `SpatialOS/snapshots`. The file is the text format representation of `defualt.snapshot`.
 * **25 Feb 2019:**
   * Added a `build.sh` script for each worker type so that you can build them individually.
   * Added a `download_dependencies.sh` script to `SpatialOS/scripts/` for downloading the project dependencies from the SpatialOS SDK.
