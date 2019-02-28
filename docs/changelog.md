@@ -1,5 +1,8 @@
 # Changelog
 
+* **28 Feb 2019:** 
+  * Made the `layer` field in [client configurations](reference/client-worker-configuration.md) and [worker configurations](reference/server-worker-configuration.md) mandatory.
+  * Fixed a bug where you cannot start a deployment when no workers are defined in your project.
 * **25 Feb 2019:** 
   * Added a `convert_snapshot.sh` script to `SpatialOS/scripts/` to demonstrate how to use the [snapshot converter tool](https://docs.improbable.io/reference/latest/shared/operate/snapshots#using-the-snapshot-converter-directly).
   * Added a `default.txt` file to `SpatialOS/snapshots`. The file is the text format representation of `defualt.snapshot`.
