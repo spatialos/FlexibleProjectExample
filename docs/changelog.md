@@ -1,5 +1,6 @@
 # Changelog
 
+* **28 Feb 2019:** Renamed "current project layout" (CPL), our term for referring to the [prevalent format for structuring SpatialOS projects](https://docs.improbable.io/reference/latest/shared/reference/project-structure), to "structured project layout" (SPL). 
 * **28 Feb 2019:** 
   * Made the `layer` field in [client configurations](reference/client-worker-configuration.md) and [worker configurations](reference/server-worker-configuration.md) mandatory.
   * Fixed a bug where you cannot start a deployment when no workers are defined in your project.

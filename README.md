@@ -98,7 +98,7 @@ There are no known issues at the moment.
 
 [Building a schema descriptor](docs/build-process/schema-descriptor-build-process.md)
 
-### Migrating from the [current project layout (CPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the flexible project layout (FPL)
+### Migrating from the [structured project layout (SPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the flexible project layout (FPL)
 [Migration guide](docs/migration-guide/migration-guide-master-page.md)
 
 [Converting project configuration files](docs/migration-guide/configs-conversion-guide.md)

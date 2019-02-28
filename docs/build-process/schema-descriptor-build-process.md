@@ -4,7 +4,7 @@ This page explains how to build a schema descriptor in a SpatialOS project thatâ
 ## Schema descriptor introduction 
 The schema descriptor is a build artifact of a SpatialOS project [assembly](https://docs.improbable.io/reference/13.6/shared/glossary#assembly). It allows the SpatialOS Runtime to interpret your projectâ€™s schema and is necessary for starting a SpatialOS deployment both locally and in the cloud. You can generate a schema descriptor using the [schema compiler tool](https://docs.improbable.io/reference/latest/shared/schema/introduction#using-the-schema-compiler-directly).
 
-**Note:** In the [current project layout (CPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure), the spatial CLI automatically generates the schema descriptor. For an FPL project, you need to manually generate your schema descriptor.
+**Note:** In the [structured project layout (SPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure), the spatial CLI automatically generates the schema descriptor. For an FPL project, you need to manually generate your schema descriptor.
 
 ## Schema descriptor build process
 1. [Download the schema compiler](worker-build-process.md#download-the-schema-compiler).

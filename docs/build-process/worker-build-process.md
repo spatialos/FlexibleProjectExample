@@ -1,5 +1,5 @@
 # Building a worker executable
-This page explains how to build a [worker](https://docs.improbable.io/reference/latest/shared/glossary#worker) in a SpatialOS project using the flexible project layout (FPL). It also serves as a guide on how to migrate the build process of a worker from the [current project layout (CPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the FPL. Refer to our [Migration guide](../migration-guide/migration-guide-master-page.md) for a summary of additional migration steps.
+This page explains how to build a [worker](https://docs.improbable.io/reference/latest/shared/glossary#worker) in a SpatialOS project using the flexible project layout (FPL). It also serves as a guide on how to migrate the build process of a worker from the [structured project layout (SPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the FPL. Refer to our [Migration guide](../migration-guide/migration-guide-master-page.md) for a summary of additional migration steps.
 
 We provide a reference implementation for building a C# worker that includes all worker build steps described in this guide. You can find it in the form of a shell script [here](../../SpatialOS/scripts/build_project.sh).
 
@@ -9,7 +9,7 @@ To build a worker in the FPL, you need to:
 2. [Generate code](#2-generate-code)
 3. [Build the worker executable](#3-build-the-worker-executable)
 
-**Migration advice:** With the CPL, the spatial CLI performs the worker build steps listed above through a combination of CLI commands ([`spatial worker codegen`](https://docs.improbable.io/reference/latest/shared/spatial-cli/spatial-worker-codegen), [`spatial worker build`](https://docs.improbable.io/reference/latest/shared/spatial-cli/spatial-worker-build)) and configuration files ([`worker build configuration`](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build), [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages)). With the FPL, you need to perform all build steps manually which gives you full control over the build process.
+**Migration advice:** With the SPL, the spatial CLI performs the worker build steps listed above through a combination of CLI commands ([`spatial worker codegen`](https://docs.improbable.io/reference/latest/shared/spatial-cli/spatial-worker-codegen), [`spatial worker build`](https://docs.improbable.io/reference/latest/shared/spatial-cli/spatial-worker-build)) and configuration files ([`worker build configuration`](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build), [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages)). With the FPL, you need to perform all build steps manually which gives you full control over the build process.
 
 ## 1. Download dependencies
 A SpatialOS SDK release consists of a collection of artifacts (libraries, tools etc.). In this build step, you will download the necessary artifacts for building a worker.
@@ -18,7 +18,7 @@ A SpatialOS SDK release consists of a collection of artifacts (libraries, tools 
 
 ### Choose an SDK version
 Before you can download any dependencies, you need to be mindful about the SDK version that you want to build your worker with. 
-* If you are upgrading a worker from the CPL to the FPL, we recommend you use the SDK version that your project is currently using as specified in your [`project definition file (CPL format)`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatialos-json) to reduce the complexity of the migration process.
+* If you are upgrading a worker from the SPL to the FPL, we recommend you use the SDK version that your project is currently using as specified in your [`project definition file (SPL format)`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatialos-json) to reduce the complexity of the migration process.
 * If you are creating a worker from scratch, we recommend that you use the same SDK version as other workers in your project.
 
 **Notes:** 
@@ -44,7 +44,7 @@ The following command flags are available:
 * `--force`: Overwrites the file to be downloaded if it already exists.
 * `--unzip`: Unzips the downloaded package. Creates specified directory if it does not exist.
 
-**Migration advice:** You can determine the worker SDK libraries that your existing worker depends on by inspecting the [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages) file in the directory of your [worker build configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build). In the CPL, the `spatialos_worker_packages.json` specifies the worker SDK libraries that the spatial CLI would automatically download for you while building a worker.
+**Migration advice:** You can determine the worker SDK libraries that your existing worker depends on by inspecting the [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages) file in the directory of your [worker build configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build). In the SPL, the `spatialos_worker_packages.json` specifies the worker SDK libraries that the spatial CLI would automatically download for you while building a worker.
 
 ### Download the standard schema library
 The [standard schema library](https://docs.improbable.io/reference/latest/shared/schema/standard-schema-library) is a collection of `.schema` files that contain common SpatialOS components. Some standard schema library components are mandatory for all SpatialOS entities.
@@ -83,8 +83,8 @@ In this final build step, you will use a build tool or process of your choice to
 
 The build process is fully customisable to the specific requirements of your worker. You might make use of a widely known build tool like CMake or MSBuild, or rely on a build system specific to your game engine.
 
-**Migration advice:** You can easily determine the build process of your existing worker by inspecting the `tasks` list in the `build` section of its [worker configuration file](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build#using-custom-build-scripts). In the CPL, the `tasks` list specifies which commands and arguments the spatial CLI should run under the hood when building a worker. Note: The `tasks` list may also be specified in a separate tasks file, usually called `<my-worker>.build.json`. The tasks file is referenced in the `build.tasks_filename` field of your worker configuration in that case.
+**Migration advice:** You can easily determine the build process of your existing worker by inspecting the `tasks` list in the `build` section of its [worker configuration file](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build#using-custom-build-scripts). In the SPL, the `tasks` list specifies which commands and arguments the spatial CLI should run under the hood when building a worker. Note: The `tasks` list may also be specified in a separate tasks file, usually called `<my-worker>.build.json`. The tasks file is referenced in the `build.tasks_filename` field of your worker configuration in that case.
 
 ### How can I verify that my worker was built correctly?
-* If you are migrating an existing worker from the CPL to the FPL, you can compare the built out worker executables for equality.
+* If you are migrating an existing worker from the SPL to the FPL, you can compare the built out worker executables for equality.
 * If you are creating a new worker from scratch, you can start a deployment locally and see if your built out worker can connect to it. If your worker is a [server-worker](https://docs.improbable.io/reference/latest/shared/glossary#server-worker), you will need to specify a [load balancing configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancing#load-balancing) and a [worker configuration file](../reference/server-worker-configuration.md) and the SpatialOS Runtime will automatically start a worker instance for you.
