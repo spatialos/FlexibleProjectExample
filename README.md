@@ -29,7 +29,7 @@ We've tested the project with the following:
 ## How do I use it?
 The custom layout is enabled by the `spatial` tool detecting a [new-format spatialos.json](docs/reference/project-configuration.md) file. 
 
-We have introduced three new spatial CLI commands under the `alpha` subcommand: `spatial alpha local launch`, `spatial alpha cloud upload` and `spatial alpha cloud launch`. These commands only work for FPL projects. In order to use them, you need to:
+We have introduced three new spatial CLI commands under the `alpha` subcommand: `spatial alpha local launch`, `spatial alpha cloud upload` and `spatial alpha cloud launch`. These commands only work for projects using the flexible project layout (FPL). In order to use them, you need to:
 * be inside a directory containing a FPL-format `spatialos.json`, **or** 
 * reference a FPL-format `spatialos.json` using the `--main_config` flag
 
@@ -80,30 +80,34 @@ $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=<path to your spatialos.json>` flag to point to your project config when running the commands from another directory.
 
 ## Known Issues
-There are no known issues at the moment.
+* If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only works with structured project layout (SPL) format launch configuration files.
 
 ## Reference documentation
 
 ### Configuration files
-[Project configuration file](docs/reference/project-configuration.md)
+* [Project configuration file](docs/reference/project-configuration.md)
 
-[Launch configuration file](docs/reference/launch-configuration.md)
+* [Launch configuration file](docs/reference/launch-configuration.md)
 
-[Server worker configuration file](docs/reference/server-worker-configuration.md)
+* [Server worker configuration file](docs/reference/server-worker-configuration.md)
 
-[Client worker configuration file](docs/reference/client-worker-configuration.md)
+* [Client worker configuration file](docs/reference/client-worker-configuration.md)
 
 ### Build process
-[Building a worker executable](docs/build-process/worker-build-process.md)
+* [Building a worker executable](docs/build-process/worker-build-process.md)
 
-[Building a schema descriptor](docs/build-process/schema-descriptor-build-process.md)
+* [Building a schema descriptor](docs/build-process/schema-descriptor-build-process.md)
 
 ### Migrating from the [structured project layout (SPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the flexible project layout (FPL)
-[Migration guide](docs/migration-guide/migration-guide-master-page.md)
+* [Migration guide](docs/migration-guide/migration-guide-master-page.md)
 
-[Converting project configuration files](docs/migration-guide/configs-conversion-guide.md)
+* [Converting project configuration files](docs/migration-guide/configs-conversion-guide.md)
 
-[FAQ](docs/migration-guide/faq.md)
+* [FAQ](docs/migration-guide/faq.md)
+
+### Using the FPL with the Platform SDK
+
+* [Starting a deployment using the Platform SDK](docs/reference/launch-configuration-with-the-platform-sdk.md)
 
 ## Changelog
 Changes to this repository are documented [here](docs/changelog.md).

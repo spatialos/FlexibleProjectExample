@@ -33,6 +33,8 @@ Below is a summary of how to populate the fields of an FPL worker configuration 
 [Reference documentation for the SPL format](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#launch-configuration-file)<br/>
 [Reference documentation for the FPL format](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md)
 
+**Note:** If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only works with SPL format launch configuration files.
+
 Below is a summary of how to populate the fields of an FPL launch configuration file based on the state of your existing SPL project:
 
 | FPL format | SPL format |

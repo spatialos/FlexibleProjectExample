@@ -23,6 +23,7 @@ To migrate a SpatialOS project from the SPL to the FPL, you need to:
     - [spatialos_worker_packages.json files](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages)
 
 ## 2. Migrate your launch configuration files
+**Note:** If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only works with SPL format launch configuration files.
 1. Migrate your launch configuration files by following the steps in [Converting the launch configuration file](configs-conversion-guide.md#converting-the-launch-configuration-file).
 2. Delete your previous SPL format launch configuration file.
 
