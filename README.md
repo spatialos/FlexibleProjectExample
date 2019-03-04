@@ -107,7 +107,7 @@ As above, you can run these commands from the `SpatialOS` directory or use the `
 
 ### Using the FPL with the Platform SDK
 
-* [Starting a deployment using the Platform SDK](docs/reference/launch-configuration-with-the-platform-sdk.md)
+* [Starting a deployment using the Platform SDK](docs/workflows/launch-deployment-platform-sdk.md)
 
 ## Changelog
 Changes to this repository are documented [here](docs/changelog.md).
