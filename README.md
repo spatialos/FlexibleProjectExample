@@ -57,8 +57,10 @@ from the `SpatialOS` directory (or from any location by adding the `--main_confi
 You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](docs/reference/launch-configuration.md) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](docs/reference/project-configuration.md) as a fall back.
 
 As soon as your deployment is running, you can connect client-workers to it. You can find the client-worker binaries in `client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac). Connect your client-worker by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
-* Windows: `./Client.exe localhost 7777 <client_id>`
-* macOS: `mono --arch=64 Client.exe localhost 7777 <client_id>`
+* Windows: `./Client.exe localhost 7777 <client-id>`
+* macOS: `mono --arch=64 Client.exe localhost 7777 <client-id>`
+
+The `<client-id>` parameter is here to uniquely identify a worker participating in a simulation. It can be an arbitrary unique string of your choice.
 
 This connects a client-worker that pings the `HelloWorker` and `DiceWorker` every few seconds and then prints the response.
 
