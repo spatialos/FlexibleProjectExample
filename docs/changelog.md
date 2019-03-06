@@ -1,8 +1,8 @@
 # Changelog
 
-* **28 Feb 2019:** Renamed "current project layout" (CPL), our term for referring to the [prevalent format for structuring SpatialOS projects](https://docs.improbable.io/reference/latest/shared/reference/project-structure), to "structured project layout" (SPL). 
 * **28 Feb 2019:** 
-  * Made the `layer` field in [client configurations](reference/client-worker-configuration.md) and [worker configurations](reference/server-worker-configuration.md) mandatory.
+  * Renamed "current project layout" (CPL), our term for referring to the [prevalent format for structuring SpatialOS projects](https://docs.improbable.io/reference/latest/shared/reference/project-structure), to "structured project layout" (SPL). 
+  * Made the `layer` field in [client configurations](reference/client-worker-configuration.md) and [worker configurations](reference/server-worker-configuration.md) mandatory. The previously supported `attributeSet` field has been removed.
   * Fixed a bug where you cannot start a deployment when no workers are defined in your project.
 * **25 Feb 2019:** 
   * Added a `convert_snapshot.sh` script to `SpatialOS/scripts/` to demonstrate how to use the [snapshot converter tool](https://docs.improbable.io/reference/latest/shared/operate/snapshots#using-the-snapshot-converter-directly).
