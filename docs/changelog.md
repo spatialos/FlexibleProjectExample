@@ -1,6 +1,6 @@
 # Changelog
 
-* **13 Feb 2019:**
+* **13 Mar 2019:**
   * Made the `loadBalancing` field in launch configs optional.
   * The `spatial alpha cloud upload` command is now always registered.
   * [Breaking]: The launch config filepath specified in `spatialos.json` is now relative to the `spatialos.json` file.
