@@ -1,5 +1,10 @@
 # Changelog
 
+* **13 Feb 2019:**
+  * Made the `loadBalancing` field in launch configs optional.
+  * The `spatial alpha cloud upload` command is now always registered.
+  * [Breaking]: The launch config filepath specified in `spatialos.json` is now relative to the `spatialos.json` file.
+  * [Breaking]: We now stop looking for a hardcoded `snapshot/default.snapshot` file when starting a deployment. The starting snapshot must be either specified in a config file or passed as a CLI flag. (FPL only)
 * **28 Feb 2019:** 
   * Renamed "current project layout" (CPL), our term for referring to the [prevalent format for structuring SpatialOS projects](https://docs.improbable.io/reference/latest/shared/reference/project-structure), to "structured project layout" (SPL). 
   * Made the `layer` field in [client configurations](reference/client-worker-configuration.md) and [worker configurations](reference/server-worker-configuration.md) mandatory. The previously supported `attributeSet` field has been removed.
