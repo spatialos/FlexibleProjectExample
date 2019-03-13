@@ -52,7 +52,7 @@ The file may be called by any name but should have the following structure:
 | :------------- | :------------- | :------- |
 | `template` | Required | Defines the compute resources your deployment needs (its ‘topology’). See [deployment templates](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#templates) for more details. |
 | `dimensionsInWorldUnits` | Required | Describes how big the world should be. "x" and "z" parameters must both be greater than 0. |
-| `loadBalancing` | Required | The new load balancing configuration as documented in [load balancing with layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancing). |
+| `loadBalancing` | Optional | The new load balancing configuration as documented in [load balancing with layers](https://docs.improbable.io/reference/latest/shared/worker-configuration/load-balancing). |
 | `snapshot` | Optional | Specifies which snapshot file to start the deployment from and how often to take a snapshot while the deployment is running. <br><br> It contains two optional fields: `takeSnapshotIntervalSeconds` (optional) and `startDeploymentFromSnapshotFile` (optional). |
 | `workerFlags` | Optional | Specifies global configuration parameters of a deployment that worker instances can read. Each element contains two fields: `workerType` (required) and `flags` (required). See [worker flags](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-flags) for more information. |
 | `streamingQueryInterval` | Optional | Period in seconds between successive streaming query updates. The default value is `4` seconds. |
