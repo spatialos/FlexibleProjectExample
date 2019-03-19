@@ -44,7 +44,7 @@ The following command flags are available:
 * `--force`: Overwrites the file to be downloaded if it already exists.
 * `--unzip`: Unzips the downloaded package. Creates specified directory if it does not exist.
 
-**Migration advice:** You can determine the worker SDK libraries that your existing worker depends on by inspecting the [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages) file in the directory of your [worker build configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build). In the SPL, the `spatialos_worker_packages.json` specifies the worker SDK libraries that the spatial CLI would automatically download for you while building a worker.
+**Migration advice:** You can determine the worker SDK libraries that your existing worker depends on by inspecting the [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages) file in the directory of your [worker build configuration](https://docs.improbable.io/reference/latest/shared/worker-configuration/worker-build). In the SPL, the [`spatialos_worker_packages.json`](https://docs.improbable.io/reference/latest/shared/reference/file-formats/spatial-worker-packages) specifies the worker SDK libraries that the spatial CLI would automatically download for you while building a worker.
 
 ### Download the standard schema library
 The [standard schema library](https://docs.improbable.io/reference/latest/shared/schema/standard-schema-library) is a collection of `.schema` files that contain common SpatialOS components. Some standard schema library components are mandatory for all SpatialOS entities.
