@@ -42,9 +42,9 @@ Below is a summary of how to populate the fields of an FPL launch configuration 
 | `template` | `template` field in your launch configuration file |
 | `dimensionsInWorldUnits.<x, z>` | `world.dimensions.<xMeters, zMeters>` field in your launch configuration file |
 | `loadBalancing` | `load_balancing` field in your launch configuration file |
-| `snapshot` | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/deployment-launch-configuration.md) for information on how to populate this field |
+| `snapshot` | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md) for information on how to populate this field |
 | `takeSnapshotIntervalSeconds` | `world.snapshots.snapshot_write_period_seconds` field in your launch configuration file |
-| `startDeploymentFromSnapshotFile`| No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/deployment-launch-configuration.md) for information on how to populate this field |
+| `startDeploymentFromSnapshotFile`| No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md) for information on how to populate this field |
 | `workerFlags.<elem>.<workerType, flags>` | `workers.<elem>.<worker_type, flags>` field in your launch configuration file |
 | `streamingQueryInterval` | `world.streaming_query_interval` field in your launch configuration file |
 | `runtimeFlags` | `world.legacy_flag` field in your launch configuration file |
