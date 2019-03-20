@@ -15,7 +15,7 @@ Below is a summary of how to populate the fields of an FPL worker configuration 
 | FPL format | SPL format |
 | --- | --- |
 | `workerType` | Part of the name of your worker configuration file, i.e. `spatialos.<my-worker-type>.worker.json` |
-| `layer` | In your worker configuration file, the `bridge.worker_attribute_set.attributes` field |
+| `layer` | `bridge.worker_attribute_set.attributes` field in your worker configuration file |
 | `entityInterest` | `bridge.entity_interest` field in your worker configuration file |
 | `streamingQuery` | `bridge.streaming_query` field in your worker configuration file |
 | `componentDelivery` | `bridge.component_delivery` field in your worker configuration file |
@@ -33,7 +33,7 @@ Below is a summary of how to populate the fields of an FPL worker configuration 
 [Reference documentation for the SPL format](https://docs.improbable.io/reference/latest/shared/reference/file-formats/launch-config#launch-configuration-file)<br/>
 [Reference documentation for the FPL format](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md)
 
-**Note:** If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only works with SPL format launch configuration files.
+**Note:** If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only supports SPL format launch configurations. We will provide an improved workflow in the future.
 
 Below is a summary of how to populate the fields of an FPL launch configuration file based on the state of your existing SPL project:
 
@@ -42,9 +42,8 @@ Below is a summary of how to populate the fields of an FPL launch configuration 
 | `template` | `template` field in your launch configuration file |
 | `dimensionsInWorldUnits.<x, z>` | `world.dimensions.<xMeters, zMeters>` field in your launch configuration file |
 | `loadBalancing` | `load_balancing` field in your launch configuration file |
-| `snapshot` | No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md) for information on how to populate this field |
-| `takeSnapshotIntervalSeconds` | `world.snapshots.snapshot_write_period_seconds` field in your launch configuration file |
-| `startDeploymentFromSnapshotFile`| No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md) for information on how to populate this field |
+| `snapshot.takeSnapshotIntervalSeconds` | `world.snapshots.snapshot_write_period_seconds` field in your launch configuration file |
+| `snapshot.startDeploymentFromSnapshotFile`| No equivalent - refer to [the documentation](https://github.com/spatialos/FlexibleProjectExample/blob/master/docs/reference/launch-configuration.md) for information on how to populate this field |
 | `workerFlags.<elem>.<workerType, flags>` | `workers.<elem>.<worker_type, flags>` field in your launch configuration file |
 | `streamingQueryInterval` | `world.streaming_query_interval` field in your launch configuration file |
 | `runtimeFlags` | `world.legacy_flag` field in your launch configuration file |
