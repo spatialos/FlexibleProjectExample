@@ -44,7 +44,7 @@ Workers are built in their own bin directories:
 * Client: `client/bin`
 
 ## Cleaning the project
-Run `git clean -xdf` to delete all build files, including worker binaries and any intermediate files generated during the build process.
+Run `git clean -xdi` to delete all build files, including worker binaries and any intermediate files generated during the build process.
 
 ## Running the project locally
 
