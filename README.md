@@ -12,7 +12,7 @@ It doesn't require any specific locations for the SpatialOS files - you can put 
 #### Prerequisites
 
 Install:
-- `spatial` CLI ([Linux](https://docs.improbable.io/reference/latest/shared/setup/linux#2-set-up-the-spatialos-cli), [macOS](https://docs.improbable.io/reference/latest/shared/setup/mac#2-install-spatialos), [Windows](https://docs.improbable.io/reference/latest/shared/setup/win#2-install-spatialos) download instructions)
+- `spatial` CLI (download instructions for [Linux](https://docs.improbable.io/reference/latest/shared/setup/linux#2-set-up-the-spatialos-cli), [macOS](https://docs.improbable.io/reference/latest/shared/setup/mac#2-install-spatialos), [Windows](https://docs.improbable.io/reference/latest/shared/setup/win#2-install-spatialos))
 - MSBuild (provided by [Mono](https://www.mono-project.com/download/stable/) for Linux and MacOS, [Microsoft.NET](https://www.microsoft.com/en-gb/download/details.aspx?id=30653) for Windows)
 - (optional) Bash Terminal (we recommend [GitBash](https://gitforwindows.org/) for Windows)
 
@@ -22,7 +22,7 @@ Mac users: ensure that `msbuild` is on your PATH.
 
 Windows users: ensure that `MSBuild.exe` is on your PATH.
 
-Bash is required for running the build script, although as an alternative you can complete these steps manually.
+Bash is required for running the build script, although as an alternative you can complete the steps manually.
 
 We've tested the project with the following:
 * Mono 4.4 (Mac)
