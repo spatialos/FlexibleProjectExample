@@ -1,5 +1,6 @@
 # Changelog
 
+* **21 Mar 2019:** We now always regenerate the C# component code for workers when building a worker.
 * **13 Mar 2019:**
   * Made the `loadBalancing` field in launch configs optional.
   * The `spatial alpha cloud upload` command is now always registered.

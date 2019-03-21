@@ -12,16 +12,15 @@ if [ ! -d "lib" ] || [ ! -d "${SCHEMA_DIR}/improbable" ]; then
 fi
 
 # Generate C# component API code from the project schema using the schema compiler
-if [ ! -d "src/improbable/generated" ]; then
-  OUT_DIR="$(pwd)/src/improbable/generated"
-  mkdir -p "${OUT_DIR}"
-  "${TOOLS_DIR}"/schema_compiler/schema_compiler \
-    --schema_path="${SCHEMA_DIR}" \
-    --csharp_out="${OUT_DIR}" \
-    --load_all_schema_on_schema_path \
-    "${SCHEMA_DIR}"/*.schema \
-    "${SCHEMA_DIR}"/improbable/*.schema
-fi
+OUT_DIR="$(pwd)/src/improbable/generated"
+rm -rf "${OUT_DIR}"
+mkdir -p "${OUT_DIR}"
+"${TOOLS_DIR}"/schema_compiler/schema_compiler \
+  --schema_path="${SCHEMA_DIR}" \
+  --csharp_out="${OUT_DIR}" \
+  --load_all_schema_on_schema_path \
+  "${SCHEMA_DIR}"/*.schema \
+  "${SCHEMA_DIR}"/improbable/*.schema
 
 # Build a worker executable for each target build platform
 for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
