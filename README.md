@@ -1,6 +1,6 @@
-# Example project using a flexible project layout
+# Example project using the [flexible project layout (FPL)](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction)
 
-> **Warning**: This project should be considered [alpha maturity](https://docs.improbable.io/reference/latest/shared/release-policy#maturity-stages) and is intended for early evaluation. Config files and worker directories are not laid out as best practice or as an example of good project layout - instead, they're laid out to demonstrate the flexibility now available in the project layout.
+> **Warning**: The flexible project layout is in [alpha maturity](https://docs.improbable.io/reference/latest/shared/release-policy#maturity-stages). It is available for testing and early evaluation but not recommended for public releases. Config files and worker directories are not laid out as best practice or as an example of good project layout - instead, they're laid out to demonstrate the flexibility now available.
 
 ## What is it?
 This is a simple SpatialOS project with two C# server workers (`HelloWorker` and `DiceWorker`) and one C# client worker (`Client`).
@@ -30,7 +30,7 @@ We've tested the project with the following:
 * GitBash 2.18 (Windows)
 
 ## How do I use it?
-The custom layout is enabled by the `spatial` tool detecting a [new-format spatialos.json](docs/reference/project-configuration.md) file. 
+The custom layout is enabled by the `spatial` tool detecting a [new-format spatialos.json](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/reference/project-configuration) file. 
 
 We have introduced three new spatial CLI commands under the `alpha` subcommand: `spatial alpha local launch`, `spatial alpha cloud upload` and `spatial alpha cloud launch`. These commands only work for projects using the flexible project layout (FPL). In order to use them, you need to:
 * be inside a directory containing a FPL-format `spatialos.json`, **or** 
@@ -57,7 +57,7 @@ $ spatial alpha local launch
 ```
 from the `SpatialOS` directory (or from any location by adding the `--main_config=<path to your spatialos.json>` flag). This starts SpatialOS locally and runs the server workers `HelloWorker` and `DiceWorker`.
 
-You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](docs/reference/launch-configuration.md) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](docs/reference/project-configuration.md) as a fall back.
+You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/reference/launch-configuration) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/reference/project-configuration) as a fall back.
 
 As soon as your deployment is running, you can connect client-workers to it. You can find the client-worker binaries in `client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac). Connect your client-worker by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
 * Windows: `./Client.exe localhost 7777 <client-id>`
@@ -84,35 +84,11 @@ $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 
 As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=<path to your spatialos.json>` flag to point to your project config when running the commands from another directory.
 
-## Known Issues
-* If you want to use the [Platform SDK](https://docs.improbable.io/reference/latest/platform-sdk/introduction), you should **not** convert your launch configuration file into FPL format. The Platform SDK currently only works with structured project layout (SPL) format launch configuration files.
-
-## Reference documentation
-
-### Configuration files
-* [Project configuration file](docs/reference/project-configuration.md)
-
-* [Launch configuration file](docs/reference/launch-configuration.md)
-
-* [Server worker configuration file](docs/reference/server-worker-configuration.md)
-
-* [Client worker configuration file](docs/reference/client-worker-configuration.md)
-
-### Build process
-* [Building a worker executable](docs/build-process/worker-build-process.md)
-
-* [Building a schema descriptor](docs/build-process/schema-descriptor-build-process.md)
-
-### Migrating from the [structured project layout (SPL)](https://docs.improbable.io/reference/latest/shared/reference/project-structure) to the flexible project layout (FPL)
-* [Migration guide](docs/migration-guide/migration-guide-master-page.md)
-
-* [Converting project configuration files](docs/migration-guide/configs-conversion-guide.md)
-
-* [FAQ](docs/migration-guide/faq.md)
-
-### Using the FPL with the Platform SDK
-
-* [Starting a deployment using the Platform SDK](docs/workflows/launch-deployment-platform-sdk.md)
+## Documentation
+Documentation for the flexible project layout can be found [here](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). The documentation includes:
+* Configuration file formats
+* Project build process
+* Guide on setting up new projects for or migrating existing projects to FPL
 
 ## Changelog
-Changes to this repository are documented [here](docs/changelog.md).
+Changes to this repository are documented [here](changelog.md).

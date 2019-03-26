@@ -1,0 +1,1 @@
+Documentation has been moved to https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction

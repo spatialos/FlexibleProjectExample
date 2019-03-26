@@ -1,5 +1,6 @@
 # Changelog
 
+* **27 Mar 2019:** Moved all documentation to our [documentation website](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). Please refer to the documentation website for FPL related documentation from now on.
 * **21 Mar 2019:** We now always regenerate the C# component code for workers when building a worker.
 * **13 Mar 2019:**
   * Made the `loadBalancing` field in launch configs optional.
