@@ -1,5 +1,9 @@
 # Changelog
 
+* **1 Apr 2019:**
+  * Moved `workerflags` from the launch configuration file to worker configuration files.
+  * Renamed the `launchConfig` field to `launchConfiguration` in spatialos.json.
+  * Field `snapshot.takeSnapshotIntervalSeconds` in the lauch configuration file now always defaults to 0 if not set (it previously defaulted to 600 in some cases).
 * **27 Mar 2019:** Moved all documentation to our [documentation website](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). Please refer to the documentation website for FPL related documentation from now on.
 * **21 Mar 2019:** We now always regenerate the C# component code for workers when building a worker.
 * **13 Mar 2019:**
