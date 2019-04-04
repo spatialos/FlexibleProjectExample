@@ -1,5 +1,6 @@
 # Changelog
 
+* **4 Apr 2019:** Promoted the flexible project layout to beta maturity. This changelog here will only list changes to the example project going forward. Please refer to the [Changelog](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction#changelog) section of our documentation website for updates on the flexible project layout feature in the future.
 * **1 Apr 2019:**
   * Moved `workerflags` from the launch configuration file to worker configuration files.
   * Renamed the `launchConfig` field to `launchConfiguration` in spatialos.json.

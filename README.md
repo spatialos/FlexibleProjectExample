@@ -1,6 +1,6 @@
 # Example project using the [flexible project layout (FPL)](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction)
 
-> **Warning**: The flexible project layout is in [alpha maturity](https://docs.improbable.io/reference/latest/shared/release-policy#maturity-stages). It is available for testing and early evaluation but not recommended for public releases. Config files and worker directories are not laid out as best practice or as an example of good project layout - instead, they're laid out to demonstrate the flexibility now available.
+> **Warning**: The flexible project layout is in [beta maturity](https://docs.improbable.io/reference/latest/shared/release-policy#maturity-stages). It is available for testing and early evaluation but not recommended for public releases. Config files and worker directories are not laid out as best practice or as an example of good project layout - instead, they're laid out to demonstrate the flexibility now available.
 
 ## What is it?
 This is a simple SpatialOS project with two C# server workers (`HelloWorker` and `DiceWorker`) and one C# client worker (`Client`).
@@ -50,6 +50,7 @@ Workers are built in their own bin directories:
 Run `git clean -xdi` to delete all build files, including worker binaries and any intermediate files generated during the build process.
 
 ## Running the project locally
+Ensure that your `spatial` CLI is up-to-date (run `spatial update`).
 
 To launch a local instance of SpatialOS running the project, run
 ```bash
@@ -83,6 +84,8 @@ $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 ```
 
 As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=<path to your spatialos.json>` flag to point to your project config when running the commands from another directory.
+
+**Note:** You will not be able to start a client to joint a cloud deployment at the moment.
 
 ## Documentation
 Documentation for the flexible project layout can be found [here](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). The documentation includes:
