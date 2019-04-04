@@ -85,13 +85,16 @@ $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 
 As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=<path to your spatialos.json>` flag to point to your project config when running the commands from another directory.
 
-**Note:** You will not be able to start a client to joint a cloud deployment at the moment.
+**Note:** You cannot start the client in this project to joint a cloud deployment at the moment.
 
 ## Documentation
 Documentation for the flexible project layout can be found [here](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). The documentation includes:
 * Configuration file formats
 * Project build process
 * Guide on setting up new projects for or migrating existing projects to FPL
+
+## Known issues
+* You cannot start the client worker provided in this project from the [Launcher](https://docs.improbable.io/reference/13.6/shared/operate/launcher) to join a cloud deployment.
 
 ## Changelog
 Changes to this repository are documented [here](changelog.md).
