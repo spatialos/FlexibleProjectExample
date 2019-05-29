@@ -61,8 +61,8 @@ from the `SpatialOS` directory (or from any location by adding the `--main_confi
 You can optionally set the `--launch_config` flag to specify a filepath to the [launch configuration](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/reference/launch-configuration) of your deployment. If the flag is not set, the spatial CLI will use launch configuration specified in the `launch_config` field of your [project configuration](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/reference/project-configuration) as a fall back.
 
 As soon as your deployment is running, you can connect client-workers to it. You can find the client-worker binaries in `client/bin/x64/ReleaseWindows` (or `ReleaseMacOS` for Mac). Connect your client-worker by opening a second terminal to run the binary directly (from inside the `ReleaseWindows` or `ReleaseMacOS` directories):
-* Windows: `./Client.exe localhost 7777 <client-id>`
-* macOS: `mono --arch=64 Client.exe localhost 7777 <client-id>`
+* Windows: `./Client.exe local localhost 7777 <client-id>`
+* macOS: `mono --arch=64 Client.exe local localhost 7777 <client-id>`
 
 The `<client-id>` parameter is here to uniquely identify a worker participating in a simulation. It can be an arbitrary unique string of your choice.
 
@@ -85,16 +85,11 @@ $ spatial alpha cloud launch -d <your-deployment-name> -a <your-assembly-name>
 
 As above, you can run these commands from the `SpatialOS` directory or use the `--main_config=<path to your spatialos.json>` flag to point to your project config when running the commands from another directory.
 
-**Note:** You cannot start the client in this project to joint a cloud deployment at the moment.
-
 ## Documentation
 Documentation for the flexible project layout can be found [here](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction). The documentation includes:
 * Configuration file formats
 * Project build process
 * Guide on setting up new projects for or migrating existing projects to FPL
-
-## Known issues
-* You cannot start the client worker provided in this project from the [Launcher](https://docs.improbable.io/reference/13.6/shared/operate/launcher) to join a cloud deployment.
 
 ## Changelog
 Changes to this repository are documented [here](changelog.md).

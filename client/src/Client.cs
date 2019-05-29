@@ -2,8 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
 using System.Text;
 using System.Timers;
 using Improbable;
@@ -13,9 +11,8 @@ namespace Demo
 {
     class Client
     {
-        private const string ProjectName = "Demo";
-        private const string WorkerType = "InteractiveClient";
-        private const string LoggerName = "Client.cs";
+        private const string WorkerType = "LauncherClient";
+        private const string LoggerName = "LauncherClient";
         private const int ErrorExitStatus = 1;
         private const uint GetOpListTimeoutInMilliseconds = 100;
         private const uint CommandRequestTimeoutMS = 100;
@@ -33,34 +30,35 @@ namespace Demo
         {
             Action printUsage = () =>
             {
-                Console.WriteLine("Usage: Client <hostname> <port> <client_id>");
-                Console.WriteLine("Connects to a demo deployment.");
-                Console.WriteLine("    <hostname>      - hostname of the receptionist to connect to.");
-                Console.WriteLine("    <port>          - port to use.");
-                Console.WriteLine("    <client_id>     - name of the client.");
-                Console.WriteLine("Alternatively: Client <snapshotfile> will generate a snapshot and exit.");
+                Console.WriteLine("Usage 1: Client local <hostname> <port> <client id>");
+                Console.WriteLine("Connect to a local deployment.");
+                Console.WriteLine("");
+                Console.WriteLine("Usage 2: Client cloud <hostname> <player identity token> <login token>");
+                Console.WriteLine("Connect to a cloud deployment.");
+                Console.WriteLine("");
+                Console.WriteLine("Usage 3: Client snapshot <snapshot file>");
+                Console.WriteLine("Generate a snapshot and exit.");
             };
 
-            if (arguments.Length != 1 && arguments.Length != 3)
+            if (arguments.Length == 2 && arguments[0] == "snapshot")
+            {
+                SnapshotGenerator.GenerateSnapshot(arguments[1], WorkerAttributes);
+                return 0;
+            }
+
+            if (arguments.Length != 4 || (arguments[0] != "local" && arguments[0] != "cloud"))
             {
                 printUsage();
                 return ErrorExitStatus;
             }
-
-            if (arguments.Length == 1)
-            {
-                SnapshotGenerator.GenerateSnapshot(arguments[0], WorkerAttributes);
-                return 0;
-            }
-
+            var connectToCloud = arguments[0] == "cloud";
+            
             Console.WriteLine("Client Starting...");
-            using (var connection = ConnectClient(arguments))
+            using (var connection = connectToCloud ? ConnectClientLocator(arguments) : ConnectClientReceptionist(arguments))
             {
+                Console.WriteLine("Client connected to the deployment.");
                 using (var dispatcher = new Dispatcher())
                 {
-                    var watch = new Stopwatch();
-                    watch.Start();
-
                     var isConnected = true;
                     var entitiesToRespond = new HashSet<EntityId>(EntityIds);
 
@@ -114,11 +112,37 @@ namespace Demo
             return 0;
         }
 
-        private static Connection ConnectClient(string[] arguments)
+        private static Connection ConnectClientLocator(string[] arguments)
         {
-            string hostname = arguments[0];
-            ushort port = Convert.ToUInt16(arguments[1]);
-            string workerId = arguments[2];
+            var hostname = arguments[1];
+            var pit = arguments[2];
+            var lt = arguments[3];
+            
+            var playerIdentityCredentials = new Improbable.Worker.Alpha.PlayerIdentityCredentials();
+            playerIdentityCredentials.PlayerIdentityToken = pit;
+            playerIdentityCredentials.LoginToken = lt;
+            
+            var locatorParameters = new Improbable.Worker.Alpha.LocatorParameters();
+            locatorParameters.PlayerIdentity = playerIdentityCredentials;
+
+            var locator = new Improbable.Worker.Alpha.Locator(hostname, locatorParameters);
+            
+            var connectionParameters = new ConnectionParameters();
+            connectionParameters.WorkerType = WorkerType;
+            connectionParameters.Network.ConnectionType = NetworkConnectionType.Tcp;
+            connectionParameters.Network.UseExternalIp = true;
+            
+            using (var future = locator.ConnectAsync(connectionParameters))
+            {
+                return future.Get();
+            }
+        }
+
+        private static Connection ConnectClientReceptionist(string[] arguments)
+        {
+            string hostname = arguments[1];
+            ushort port = Convert.ToUInt16(arguments[2]);
+            string workerId = arguments[3];
             var connectionParameters = new ConnectionParameters();
             connectionParameters.WorkerType = WorkerType;
             connectionParameters.Network.ConnectionType = NetworkConnectionType.Tcp;

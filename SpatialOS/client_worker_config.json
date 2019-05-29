@@ -1,5 +1,5 @@
 {
-  "workerType": "InteractiveClient",
+  "workerType": "LauncherClient",
   "layer": "client",
   "entityInterest": {
     "rangeEntityInterest": {
@@ -12,10 +12,23 @@
   },
   "uploadConfiguration": {
     "windows": {
-      "localBuildDirectory": "../client/bin/x64/ReleaseWindows"
+      "localBuildDirectory": "../client/bin/x64/ReleaseWindows",
+      "launcherCommand": "bootstrap.bat",
+      "launcherArguments" : [
+        "${IMPROBABLE_LOCATOR_HOSTNAME}",
+        "${IMPROBABLE_PLAYER_IDENTITY_TOKEN}",
+        "${IMPROBABLE_LOGIN_TOKEN}"
+      ]
     },
     "macos": {
-      "localBuildDirectory": "../client/bin/x64/ReleaseMacOS"
+      "localBuildDirectory": "../client/bin/x64/ReleaseMacOS",
+      "launcherCommand": "bash",
+      "launcherArguments" : [
+        "bootstrap.sh",
+        "${IMPROBABLE_LOCATOR_HOSTNAME}",
+        "${IMPROBABLE_PLAYER_IDENTITY_TOKEN}",
+        "${IMPROBABLE_LOGIN_TOKEN}"
+      ]
     },
     "linux": {
       "localBuildDirectory": "../client/bin/x64/ReleaseLinux"

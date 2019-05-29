@@ -28,6 +28,13 @@ for PLATFORM in "${BUILD_PLATFORMS[@]}"; do
   cp -r $(pwd)/src/bin .
   rm -rf $(pwd)/src/bin
   rm -rf $(pwd)/src/obj
+
+  if [ "$PLATFORM" = "Windows64" ]; then
+    cp bootstrap.bat bin/x64/ReleaseWindows
+  fi
+  if [ "$PLATFORM" = "macOS64" ]; then
+    cp bootstrap.sh bin/x64/ReleaseMacOS
+  fi
 done
 
 popd
