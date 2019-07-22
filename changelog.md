@@ -1,5 +1,7 @@
 # Changelog
 
+* **23 Jul 2019:**
+  * Upgraded the project to use SpatialOS SDK version 14.0.0.
 * **29 May 2019:** You can now start client-workers instances for cloud deployments using the [Launcher](https://docs.improbable.io/reference/latest/shared/operate/launcher).
 * **4 Apr 2019:** Promoted the flexible project layout to beta maturity. This changelog here will only list changes to the example project going forward. Please refer to the [Changelog](https://docs.improbable.io/reference/latest/shared/flexible-project-layout/introduction#changelog) section of our documentation website for updates on the flexible project layout feature in the future.
 * **1 Apr 2019:**

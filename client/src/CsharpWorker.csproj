@@ -16,8 +16,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Improbable.WorkerSdkCsharp, Version=13.5.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\lib\improbable\sdk\13.5.1\csharp\Improbable.WorkerSdkCsharp.dll</HintPath>
+    <Reference Include="Improbable.Worker">
+      <HintPath>..\lib\improbable\sdk\14.0.0\csharp\Improbable.Worker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -26,20 +26,16 @@
     <Compile Include="SnapshotGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\lib\improbable\sdk\13.5.1\linux64\libCoreSdkDll.so">
-      <Link>libCoreSdkDll.so</Link>
+    <Content Include="..\lib\improbable\sdk\14.0.0\linux64\libimprobable_worker.so">
+      <Link>libimprobable_worker.so</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\lib\improbable\sdk\13.5.1\macos64\libCoreSdkDll.dylib">
-      <Link>libCoreSdkDll.dylib</Link>
+    <Content Include="..\lib\improbable\sdk\14.0.0\macos64\libimprobable_worker.dylib">
+      <Link>libimprobable_worker.dylib</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\lib\improbable\sdk\13.5.1\win64\CoreSdkDll.dll">
-      <Link>CoreSdkDll.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\improbable\sdk\13.5.1\win64\CoreSdkDll.lib">
-      <Link>CoreSdkDll.lib</Link>
+    <Content Include="..\lib\improbable\sdk\14.0.0\win64\improbable_worker.dll">
+      <Link>improbable_worker.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

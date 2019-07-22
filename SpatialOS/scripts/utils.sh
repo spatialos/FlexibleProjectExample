@@ -5,7 +5,7 @@
 set -e -x
 pushd "$( dirname "${BASH_SOURCE[0]}" )"
 
-SDK_VERSION="13.5.1"
+SDK_VERSION="14.0.0"
 
 WORKER_DIRS=("$(pwd)/../../HelloWorker" "$(pwd)/../../DiceWorker" "$(pwd)/../../client")
 TOOLS_DIR="$(pwd)/../tools/${SDK_VERSION}"

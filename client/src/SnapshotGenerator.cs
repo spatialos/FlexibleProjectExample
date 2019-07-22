@@ -17,7 +17,7 @@ namespace Demo
     {
         public static void GenerateSnapshot(string snapshotPath, string[] workers)
         {
-            Console.WriteLine(String.Format("Generating snapshot file {0}", snapshotPath));
+            Console.WriteLine($"Generating snapshot file {snapshotPath}");
             using (var snapshotOutput = new SnapshotOutputStream(snapshotPath))
             {
                 for (var i = 0; i < workers.Length; i++)
@@ -25,10 +25,17 @@ namespace Demo
                     var entityId = new EntityId(i + 1);
                     var workerType = workers[i];
                     var entity = createEntity(workerType);
-                    var error = snapshotOutput.WriteEntity(entityId, entity);
-                    if (error.HasValue)
+                    try
                     {
-                        throw new System.SystemException("error saving: " + error.Value);
+                        snapshotOutput.WriteEntity(entityId, entity);
+                    }
+                    catch (StreamInvalidDataException ex)
+                    {
+                        throw new SystemException("StreamInvalidDataException saving entity: " + ex.Message);
+                    }
+                    catch (StreamBadStateException ex)
+                    {
+                        throw new SystemException("StreamBadStateException saving entity: " + ex.Message);
                     }
                 }
             }

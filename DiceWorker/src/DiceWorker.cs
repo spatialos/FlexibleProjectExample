@@ -33,45 +33,42 @@ namespace Demo
             Console.WriteLine("Worker Starting...");
             using (var connection = ConnectWorker(arguments))
             {
-                using (var dispatcher = new Dispatcher())
+                var dispatcher = new Dispatcher();
+                var isConnected = true;
+
+                dispatcher.OnDisconnect(op =>
                 {
-                    var isConnected = true;
+                    Console.Error.WriteLine("[disconnect] {0}", op.Reason);
+                    isConnected = false;
+                });
 
-                    dispatcher.OnDisconnect(op =>
+                dispatcher.OnLogMessage(op =>
+                {
+                    connection.SendLogMessage(op.Level, LoggerName, op.Message);
+                    Console.WriteLine("Log Message: {0}", op.Message);
+                    if (op.Level == LogLevel.Fatal)
                     {
-                        Console.Error.WriteLine("[disconnect] {0}", op.Reason);
-                        isConnected = false;
-                    });
+                        Console.Error.WriteLine("Fatal error: {0}", op.Message);
+                        Environment.Exit(ErrorExitStatus);
+                    }
+                });
 
-                    dispatcher.OnLogMessage(op =>
+                dispatcher.OnCommandRequest(PingResponder.Commands.Ping.Metaclass, request =>
+                {
+                    connection.SendLogMessage(LogLevel.Info, LoggerName, "Received GetWorkerType command");
+
+                    var randomNumber = 4; // chosen by fair dice roll. guaranteed to be random.
+                    var pingResponse = new Pong(WorkerType, String.Format("I rolled a die and got {0}!", randomNumber));
+                    connection.SendCommandResponse(PingResponder.Commands.Ping.Metaclass, request.RequestId, pingResponse);
+                });
+
+                connection.SendLogMessage(LogLevel.Info, LoggerName,
+                    "Successfully connected using TCP and the Receptionist");
+                while (isConnected)
+                {
+                    using (var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds))
                     {
-                        connection.SendLogMessage(op.Level, LoggerName, op.Message);
-                        Console.WriteLine("Log Message: {0}", op.Message);
-                        if (op.Level == LogLevel.Fatal)
-                        {
-                            Console.Error.WriteLine("Fatal error: {0}", op.Message);
-                            Environment.Exit(ErrorExitStatus);
-                        }
-                    });
-
-                    dispatcher.OnCommandRequest<PingResponder.Commands.Ping>(request =>
-                    {
-                        connection.SendLogMessage(LogLevel.Info, LoggerName, "Received GetWorkerType command");
-
-                        var randomNumber = 4; // chosen by fair dice roll. guaranteed to be random.
-                        var pingResponse = new Pong(WorkerType, String.Format("I rolled a die and got {0}!", randomNumber));
-                        var commandResponse = new PingResponder.Commands.Ping.Response(pingResponse);
-                        connection.SendCommandResponse(request.RequestId, commandResponse);
-                    });
-
-                    connection.SendLogMessage(LogLevel.Info, LoggerName,
-                        "Successfully connected using TCP and the Receptionist");
-                    while (isConnected)
-                    {
-                        using (var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds))
-                        {
-                            dispatcher.Process(opList);
-                        }
+                        dispatcher.Process(opList);
                     }
                 }
             }

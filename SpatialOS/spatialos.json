@@ -1,6 +1,6 @@
 {
   "configurationVersion": "0.1",
-  "projectName": "your_project_name_here",
+  "projectName": "webtools",
   "schemaDescriptor": "./schema/bin/schema.descriptor",
   "clientWorkers": [
     "./client_worker_config.json"

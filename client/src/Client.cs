@@ -57,55 +57,53 @@ namespace Demo
             using (var connection = connectToCloud ? ConnectClientLocator(arguments) : ConnectClientReceptionist(arguments))
             {
                 Console.WriteLine("Client connected to the deployment.");
-                using (var dispatcher = new Dispatcher())
+                var dispatcher = new Dispatcher();
+                var isConnected = true;
+                var entitiesToRespond = new HashSet<EntityId>(EntityIds);
+
+                dispatcher.OnDisconnect(op =>
                 {
-                    var isConnected = true;
-                    var entitiesToRespond = new HashSet<EntityId>(EntityIds);
+                    Console.Error.WriteLine("[disconnect] {0}", op.Reason);
+                    isConnected = false;
+                });
 
-                    dispatcher.OnDisconnect(op =>
+                dispatcher.OnLogMessage(op =>
+                {
+                    connection.SendLogMessage(op.Level, LoggerName, op.Message);
+                    Console.WriteLine("Log Message: {0}", op.Message);
+                    if (op.Level == LogLevel.Fatal)
                     {
-                        Console.Error.WriteLine("[disconnect] {0}", op.Reason);
-                        isConnected = false;
-                    });
-
-                    dispatcher.OnLogMessage(op =>
-                    {
-                        connection.SendLogMessage(op.Level, LoggerName, op.Message);
-                        Console.WriteLine("Log Message: {0}", op.Message);
-                        if (op.Level == LogLevel.Fatal)
-                        {
-                            Console.Error.WriteLine("Fatal error: {0}", op.Message);
-                            Environment.Exit(ErrorExitStatus);
-                        }
-                    });
-                    dispatcher.OnAuthorityChange<Position>(cb =>
-                    {
-                        Console.WriteLine("authority change {0}", cb.Authority);
-                    });
-
-                    dispatcher.OnCommandResponse<PingResponder.Commands.Ping>(response =>
-                    {
-                        HandlePong(response, connection);
-                    });
-
-                    connection.SendLogMessage(LogLevel.Info, LoggerName,
-                        "Successfully connected using TCP and the Receptionist");
-
-                    var pingTimer = new Timer(pingIntervalMs);
-                    pingTimer.Elapsed += (source, e) =>
-                    {
-                        foreach (var entityId in entitiesToRespond)
-                        {
-                            SendGetWorkerTypeCommand(connection, entityId);
-                        }
-                    };
-                    pingTimer.Start();
-
-                    while (isConnected)
-                    {
-                        var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds);
-                        dispatcher.Process(opList);
+                        Console.Error.WriteLine("Fatal error: {0}", op.Message);
+                        Environment.Exit(ErrorExitStatus);
                     }
+                });
+                dispatcher.OnAuthorityChange(Position.Metaclass, cb =>
+                {
+                    Console.WriteLine("authority change {0}", cb.Authority);
+                });
+
+                dispatcher.OnCommandResponse(PingResponder.Commands.Ping.Metaclass, response =>
+                {
+                    HandlePong(response, connection);
+                });
+
+                connection.SendLogMessage(LogLevel.Info, LoggerName,
+                    "Successfully connected using TCP and the Receptionist");
+
+                var pingTimer = new Timer(pingIntervalMs);
+                pingTimer.Elapsed += (source, e) =>
+                {
+                    foreach (var entityId in entitiesToRespond)
+                    {
+                        connection.SendCommandRequest(PingResponder.Commands.Ping.Metaclass, entityId, new PingRequest(), CommandRequestTimeoutMS, null);
+                    }
+                };
+                pingTimer.Start();
+
+                while (isConnected)
+                {
+                    var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds);
+                    dispatcher.Process(opList);
                 }
             }
 
@@ -118,14 +116,15 @@ namespace Demo
             var pit = arguments[2];
             var lt = arguments[3];
             
-            var playerIdentityCredentials = new Improbable.Worker.Alpha.PlayerIdentityCredentials();
+            var playerIdentityCredentials = new PlayerIdentityCredentials();
             playerIdentityCredentials.PlayerIdentityToken = pit;
             playerIdentityCredentials.LoginToken = lt;
             
-            var locatorParameters = new Improbable.Worker.Alpha.LocatorParameters();
+            var locatorParameters = new LocatorParameters();
+            locatorParameters.CredentialsType = LocatorCredentialsType.PlayerIdentity;
             locatorParameters.PlayerIdentity = playerIdentityCredentials;
 
-            var locator = new Improbable.Worker.Alpha.Locator(hostname, locatorParameters);
+            var locator = new Locator(hostname, locatorParameters);
             
             var connectionParameters = new ConnectionParameters();
             connectionParameters.WorkerType = WorkerType;
@@ -154,7 +153,7 @@ namespace Demo
         }
 
         private static void HandlePong(
-            CommandResponseOp<PingResponder.Commands.Ping> response, Connection connection)
+            CommandResponseOp<PingResponder.Commands.Ping, Pong> response, Connection connection)
         {
             if (response.StatusCode != StatusCode.Success)
             {
@@ -173,28 +172,20 @@ namespace Demo
                 else
                 {
                     logMessageBuilder.Append(
-                        String.Format("The EntityIdResponse ID value was {0}", response.Response.Value.Get().Value));
+                        String.Format("The EntityIdResponse ID value was {0}", response.Response.Value));
                 }
 
                 connection.SendLogMessage(LogLevel.Warn, LoggerName, logMessageBuilder.ToString());
             }
             else
             {
-                var workerType = response.Response.Value.Get().Value.workerType;
-                var workerMessage = response.Response.Value.Get().Value.workerMessage;
+                var workerType = response.Response.Value.workerType;
+                var workerMessage = response.Response.Value.workerMessage;
                 var logMessage = String.Format("New Response: {0} says \"{1}\"", workerType, workerMessage);
               
                 Console.WriteLine(logMessage);
                 connection.SendLogMessage(LogLevel.Info, LoggerName, logMessage);
             }
-        }
-
-
-        private static void SendGetWorkerTypeCommand(Connection connection, EntityId entityId)
-        {
-            PingResponder.Commands.Ping.Request ping =
-                new PingResponder.Commands.Ping.Request(new PingRequest());
-            connection.SendCommandRequest(entityId, ping, CommandRequestTimeoutMS, null);
         }
     }
 }

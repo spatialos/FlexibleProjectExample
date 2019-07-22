@@ -22,27 +22,31 @@ retrievePackage() {
 # * Core SDK library for Windows, MacOs and Linux (lib folder): Functionalities for letting a program participate in a SpatialOS simulation as a worker
 # * Standard schema library (schema/improbable folder): Common SpatialOS component definitions
 
+rm -rf "${TOOLS_DIR}"
 mkdir -p "${TOOLS_DIR}"
 pushd "${TOOLS_DIR}"
 retrievePackage "tools" "schema_compiler-x86_64-${PLATFORM_NAME}" "schema_compiler"
 retrievePackage "tools" "snapshot_converter-x86_64-${PLATFORM_NAME}" "snapshot_converter"
 popd
 
+rm -rf "${LIB_DIR}"
 mkdir -p "${LIB_DIR}"
 pushd "${LIB_DIR}"
 retrievePackage "worker_sdk" "csharp" "csharp"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-win32" "win64"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-macos" "macos64"
-retrievePackage "worker_sdk" "core-dynamic-x86_64-linux" "linux64"
+retrievePackage "worker_sdk" "c-dynamic-x86_64-vc140_mt-win32" "win64"
+retrievePackage "worker_sdk" "c-dynamic-x86_64-clang-macos" "macos64"
+retrievePackage "worker_sdk" "c-dynamic-x86_64-gcc510-linux" "linux64"
 
 # Move the Worker SDK libraries into the lib folder of each worker project
 for WORKER_DIR in "${WORKER_DIRS[@]}"; do
+  rm -rf "${WORKER_DIR}/lib/improbable/sdk"
   mkdir -p "${WORKER_DIR}/lib/improbable/sdk/${SDK_VERSION}"
   cp -r "${LIB_DIR}" "${WORKER_DIR}/lib/improbable/sdk"
 done
 popd
 
 pushd "${SCHEMA_DIR}"
+rm -rf "improbable"
 retrievePackage "schema" "standard_library" ""
 popd
 
