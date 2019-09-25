@@ -1,5 +1,7 @@
 # Changelog
 
+* **25 Sept 2019:**
+  * Moved and renamed `snapshot.startDeploymentFromSnapshotFile` from the launch configuration file to `defaultSnapshotUploadFilepath` in spatialos.json.
 * **22 Jul 2019:**
   * Upgraded the project to use SpatialOS SDK version 14.0.0.
   * Changed the template in the launch configuration from `small` to `w2_r0500_e5`.

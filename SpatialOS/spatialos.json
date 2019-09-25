@@ -9,5 +9,6 @@
     "./hello_worker_config.json",
     "./dice_worker_config.json"
   ],
-  "launchConfiguration": "./launch_configs/deployment.json"
+  "launchConfiguration": "./launch_configs/deployment.json",
+  "defaultSnapshotUploadFilepath": "./snapshots/default.snapshot"
 }
